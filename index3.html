@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini App</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column; /* Располагаем элементы вертикально */
+      align-items: flex-start; /* Выровнять элементы по левому краю */
+      height: 100vh; /* Занять всю высоту окна */
+      margin: 0;
+      background-color: #f0f0f0;
+      padding: 20px; /* Добавляем отступы для удобства */
+      overflow: hidden; /* Скрыть прокрутку */
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center; /* Центрируем аватар и имя по вертикали */
+      margin-bottom: 20px; /* Отступ снизу */
+    }
+
+    .user-info img {
+      width: 50px; 
+      height: 50px;
+      border-radius: 50%; 
+      margin-right: 10px; 
+    }
+
+    .user-info span {
+      font-weight: bold; 
+    }
+
+    button {
+      position: absolute; /* Фиксируем кнопку внизу */
+      bottom: 20px; /* Отступ снизу */
+      left: 50%; /* Центрируем кнопку по горизонтали */
+      transform: translateX(-50%); /* Смещаем кнопку на половину её ширины для центрирования */
+      padding: 10px 40px;
+      font-size: 16px;
+      background-color: #4CAF50; 
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #output {
+       white-space: pre-wrap; 
+       margin-top: 20px; /* Добавляем отступ сверху для вывода */
+     }
+
+     #timer {
+       position: absolute; /* Позиционируем таймер по центру */
+       top: 50%; /* Центрируем по вертикали */
+       left: 50%; /* Центрируем по горизонтали */
+       transform: translate(-50%, -50%); /* Смещаем на половину ширины и высоты для точного центрирования */
+       font-size: 24px; /* Размер шрифта таймера */
+       font-weight: bold; /* Жирный шрифт для таймера */
+     }
+    
+  </style>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+
+<body>
+
+  <div class="user-info">
+    <img id="userAvatar" src="placeholder.jpg" alt="User Avatar">
+    <span id="userName">User Name</span>
+  </div>
+
+  <div id="output"></div> 
+
+  <div id="timer">00:00</div> <!-- Элемент для отображения таймера -->
+
+  <button onclick="toggleTimer()">Start</button>
+
+  <script>
+    let timerInterval = null; // Переменная для хранения интервала таймера
+    let seconds = 0; // Переменная для отслеживания времени
+
+    document.addEventListener('DOMContentLoaded', () => {
+      
+     // Инициализация Telegram Web App
+     Telegram.WebApp.ready();
+
+     // Разворачиваем приложение на весь экран
+     Telegram.WebApp.expand();
+
+     const outputDiv = document.getElementById('output');
+     const initData = Telegram.WebApp.initData;
+
+     const params = new URLSearchParams(initData);
+     const userData = Object.fromEntries(params);
+
+     if (userData.user) {
+       const user = JSON.parse(userData.user); 
+       outputDiv.textContent += `User ID: ${user.id}\n`;
+       outputDiv.textContent += `First Name: ${user.first_name || "Имя не указано"}\n`;
+       outputDiv.textContent += `Last Name: ${user.last_name || "Фамилия не указана"}\n`;
+       outputDiv.textContent += `Username: ${user.username || "Имя пользователя не указано"}\n`;
+
+       document.getElementById('userName').textContent = user.first_name || "Имя не указано";
+       if (user.photo_url) {
+         document.getElementById('userAvatar').src = user.photo_url;
+       }
+     } else {
+       outputDiv.textContent += "User data not available.";
+       document.getElementById('userName').textContent = "User data not available.";
+     }
+   });
+
+   function toggleTimer() {
+     const timerDisplay = document.getElementById('timer');
+     
+     if (timerInterval) {
+       clearInterval(timerInterval); // Остановить таймер
+       timerInterval = null;
+     } else {
+       timerInterval = setInterval(() => {
+         seconds++; // Увеличиваем счетчик секунд
+         const minutes = Math.floor(seconds / 60);
+         const remainingSeconds = seconds % 60;
+         timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`; // Форматируем вывод
+       }, 1000); // Обновляем каждую секунду
+     }
+   }
+
+   function start() {
+     console.log("Start button clicked");
+   }
+ </script>
+
+</body>
+</html>
