@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini App</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* Располагаем элементы вертикально */
+            align-items: flex-start; /* Выровнять элементы по левому краю */
+            height: 100vh; /* Занять всю высоту окна */
+            margin: 0;
+            background-color: #f0f0f0;
+            padding: 20px; /* Добавляем отступы для удобства */
+            overflow: hidden; /* Скрыть прокрутку */
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center; /* Центрируем аватар и имя по вертикали */
+            margin-bottom: 20px; /* Отступ снизу */
+        }
+
+        .user-info img {
+            width: 50px; 
+            height: 50px;
+            border-radius: 50%; 
+            margin-right: 10px; 
+        }
+
+        .user-info span {
+            font-weight: bold; 
+        }
+
+        button {
+            position: absolute; /* Фиксируем кнопку внизу */
+            bottom: 20px; /* Отступ снизу */
+            left: 50%; /* Центрируем кнопку по горизонтали */
+            transform: translateX(-50%); /* Смещаем кнопку на половину её ширины для центрирования */
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50; /* Зеленый цвет по умолчанию */
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #timer {
+            position: absolute; /* Позиционируем таймер по центру */
+            top: 50%; /* Центрируем по вертикали */
+            left: 50%; /* Центрируем по горизонтали */
+            transform: translate(-50%, -50%); /* Смещаем на половину ширины и высоты для точного центрирования */
+        }
+
+        svg {
+            width: 150px; /* Ширина круга */
+            height: 150px; /* Высота круга */
+        }
+
+        circle {
+            fill: none;
+            stroke-width: 10;
+        }
+
+        .background {
+            stroke: #e6e6e6; /* Цвет фона круга */
+        }
+
+        .progress {
+            stroke: #4CAF50; /* Цвет заполнения */
+            transition: stroke-dashoffset 1s linear; /* Плавный переход */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="user-info">
+        <img id="userAvatar" src="placeholder.jpg" alt="User Avatar">
+        <span id="userName">User Name</span>
+    </div>
+
+    <div id="output"></div> 
+
+    <div id="timer">
+        <svg viewBox="0 0 100 100">
+            <circle class="background" cx="50" cy="50" r="45"></circle>
+            <circle class="progress" cx="50" cy="50" r="45"></circle>
+        </svg>
+    </div>
+
+    <button id="timerButton" onclick="toggleTimer()">Start</button>
+
+    <script>
+        let timerInterval = null; // Переменная для хранения интервала таймера
+        let seconds = 0; // Переменная для отслеживания времени
+        const totalTime = 60; // Общее время в секундах (например, 60 секунд)
+        const progressCircle = document.querySelector('.progress');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+         // Инициализация Telegram Web App
+         Telegram.WebApp.ready();
+
+         // Разворачиваем приложение на весь экран
+         Telegram.WebApp.expand();
+
+         const outputDiv = document.getElementById('output');
+         const initData = Telegram.WebApp.initData;
+
+         const params = new URLSearchParams(initData);
+         const userData = Object.fromEntries(params);
+
+         if (userData.user) {
+           const user = JSON.parse(userData.user); 
+          
+           document.getElementById('userName').textContent = user.first_name || "Имя не указано";
+           if (user.photo_url) {
+             document.getElementById('userAvatar').src = user.photo_url;
+           }
+         } else {
+           document.getElementById('userName').textContent = "User data not available.";
+         }
+       });
+
+       function toggleTimer() {
+         const timerButton = document.getElementById('timerButton');
+         
+         if (timerInterval) {
+           clearInterval(timerInterval); // Остановить таймер
+           timerInterval = null;
+           timerButton.textContent = "Start"; // Изменяем текст кнопки на "Start"
+           timerButton.style.backgroundColor = "#4CAF50"; // Возвращаем зеленый цвет
+           resetTimer(); // Сбросить таймер
+         } else {
+           startTimer();
+           timerButton.textContent = "Stop"; // Изменяем текст кнопки на "Stop"
+           timerButton.style.backgroundColor = "red"; // Меняем цвет кнопки на красный
+         }
+       }
+
+       function startTimer() {
+         seconds = 0; // Сбросить счетчик секунд
+         progressCircle.style.strokeDasharray = `${2 * Math.PI * 45}`; // Устанавливаем длину окружности
+         progressCircle.style.strokeDashoffset = `0`; // Начальное значение
+
+         timerInterval = setInterval(() => {
+           seconds++; // Увеличиваем счетчик секунд
+           
+           const offset = (seconds / totalTime) * (2 * Math.PI * 45); // Вычисляем смещение
+           progressCircle.style.strokeDashoffset = offset; // Обновляем смещение
+
+           if (seconds >= totalTime) {
+             clearInterval(timerInterval); // Остановить таймер по истечении времени
+             timerInterval = null;
+             document.getElementById('timerButton').textContent = "Start"; // Изменяем текст кнопки на "Start"
+             document.getElementById('timerButton').style.backgroundColor = "#4CAF50"; // Возвращаем зеленый цвет
+             resetTimer(); // Сбросить прогресс
+           }
+           
+         }, 1000); // Обновляем каждую секунду
+       }
+
+       function resetTimer() {
+         seconds = 0; 
+         progressCircle.style.strokeDashoffset = `${2 * Math.PI * 45}`; // Сбросить прогресс
+       }
+    </script>
+
+</body>
+</html>
