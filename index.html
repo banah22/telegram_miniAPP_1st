@@ -93,7 +93,8 @@
     <script>
         let timerInterval = null; // Переменная для хранения интервала таймера
         let seconds = 0; // Переменная для отслеживания времени
-        const totalTime = 60; // Общее время в секундах (например, 60 секунд)
+        let totalTime = USER_DURATION || 300; // Общее время в секундах (значение из глобальной переменной USER_DURATION)
+        
         const progressCircle = document.querySelector('.progress');
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -112,7 +113,7 @@
 
          if (userData.user) {
            const user = JSON.parse(userData.user); 
-          
+           
            document.getElementById('userName').textContent = user.first_name || "Имя не указано";
            if (user.photo_url) {
              document.getElementById('userAvatar').src = user.photo_url;
@@ -141,12 +142,12 @@
        function startTimer() {
          seconds = 0; // Сбросить счетчик секунд
          progressCircle.style.strokeDasharray = `${2 * Math.PI * 45}`; // Устанавливаем длину окружности
-         progressCircle.style.strokeDashoffset = `0`; // Начальное значение
+         progressCircle.style.strokeDashoffset = `${2 * Math.PI * 45}`; // Начальное значение (полностью заполнен)
 
          timerInterval = setInterval(() => {
            seconds++; // Увеличиваем счетчик секунд
            
-           const offset = (seconds / totalTime) * (2 * Math.PI * 45); // Вычисляем смещение
+           const offset = (1 - (seconds / totalTime)) * (2 * Math.PI * 45); // Вычисляем смещение для прогрессии
            progressCircle.style.strokeDashoffset = offset; // Обновляем смещение
 
            if (seconds >= totalTime) {
