@@ -5,19 +5,20 @@
   <title>Mini App</title>
   <style>
     body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      position: relative; 
       margin: 0;
       background-color: #f0f0f0;
+      display: flex;
+      justify-content: center; 
+      align-items: center; 
     }
     
     .user-info {
+      position: absolute; /* Позиционируем элемент абсолютно */
+      top: 20px; /* Отступ сверху */
+      left: 20px; /* Отступ слева */
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
     }
 
     .user-info img {
@@ -32,7 +33,7 @@
     }
 
     button {
-      padding: 10px 20px;
+      padding: 10px 40px;
       font-size: 16px;
       background-color: #4CAF50; 
       color: white;
@@ -76,18 +77,14 @@
 
      if (userData.user) {
        const user = JSON.parse(userData.user); 
-       outputDiv.textContent += `User ID: ${user.id}\n`;
-       outputDiv.textContent += `First Name: ${user.first_name || "Имя не указано"}\n`;
-       outputDiv.textContent += `Last Name: ${user.last_name || "Фамилия не указана"}\n`;
-       outputDiv.textContent += `Username: ${user.username || "Имя пользователя не указано"}\n`;
+       
 
        document.getElementById('userName').textContent = user.first_name || "Имя не указано";
        if (user.photo_url) {
          document.getElementById('userAvatar').src = user.photo_url;
        }
      } else {
-       outputDiv.textContent += "User data not available.";
-       document.getElementById('userName').textContent = "User data not available.";
+         document.getElementById('userName').textContent = "User data not available.";
      }
    });
 
