@@ -44,7 +44,8 @@ display: flex;
     }
     
   </style>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 
 <body>
@@ -89,9 +90,9 @@ display: flex;
   
 
      if (userData.user) {
-      document.getElementById('userName').textContent = userData.user.first_name || "Имя не указано";
+      document.getElementById('userName').textContent = user.first_name || "Имя не указано";
       if (user.photo_url) {
-        document.getElementById('userAvatar').src = userData.user.photo_url;
+        document.getElementById('userAvatar').src = user.photo_url;
       }
     });
   </script>
