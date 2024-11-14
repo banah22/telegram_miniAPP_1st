@@ -48,7 +48,7 @@ display: flex;
 </head>
 <body>
 
- // <div id="output"></div> 
+  <div id="output"></div> 
 <div class="user-info">
     <img id="userAvatar" src="placeholder.jpg" alt="User Avatar">
     <span id="userName">User Name</span>
@@ -72,7 +72,8 @@ display: flex;
       const initData = Telegram.WebApp.initData;
       const params = new URLSearchParams(initData);
       const userData = Object.fromEntries(params);
-      
+
+      <comment>
       if (userData.user) {
         const user = JSON.parse(userData.user); // Parse the user object
         logToMiniApp("User ID: " + user.id);
@@ -82,13 +83,15 @@ display: flex;
       } else {
         logToMiniApp("User data not available.");
       }
-    });
+  </comment>
+  
 
      if (userData.user) {
       document.getElementById('userName').textContent = userData.user.first_name || "Имя не указано";
       if (user.photo_url) {
         document.getElementById('userAvatar').src = userData.user.photo_url;
       }
+    });
   </script>
 
 </body>
