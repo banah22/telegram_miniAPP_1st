@@ -5,7 +5,7 @@
   <title>Mini App</title>
   <style>
     #output {
-      white-space: pre-wrap; /* For proper line breaks *
+      white-space: pre-wrap; /* For proper line breaks */
     }
 display: flex;
       flex-direction: column;
@@ -46,10 +46,12 @@ display: flex;
   </style>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
+
 <body>
 
   <div id="output"></div> 
-<div class="user-info">
+  
+  <div class="user-info">
     <img id="userAvatar" src="placeholder.jpg" alt="User Avatar">
     <span id="userName">User Name</span>
   </div>
@@ -75,7 +77,7 @@ display: flex;
 
       <comment>
       if (userData.user) {
-        const user = JSON.parse(userData.user); // Parse the user object
+        const user = JSON.parse(userData.user); 
         logToMiniApp("User ID: " + user.id);
         logToMiniApp("First Name: " + (user.first_name || "Имя не указано"));
         logToMiniApp("Last Name: " + (user.last_name || "Фамилия не указана"));
@@ -83,7 +85,7 @@ display: flex;
       } else {
         logToMiniApp("User data not available.");
       }
-  </comment>
+      </comment>
   
 
      if (userData.user) {
