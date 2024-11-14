@@ -5,8 +5,44 @@
   <title>Mini App</title>
   <style>
     #output {
-      white-space: pre-wrap; /* For proper line breaks */
+      white-space: pre-wrap; /* For proper line breaks *
     }
+display: flex;
+      flex-direction: column;
+      align-items: center; /* Центрируем элементы по горизонтали */
+      justify-content: center; /* Центрируем элементы по вертикали */
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0; /* Цвет фона (можно изменить) */
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px; /* Отступ снизу */
+    }
+
+    .user-info img {
+      width: 50px; /* Размер аватара */
+      height: 50px;
+      border-radius: 50%; /* Делаем аватар круглым */
+      margin-right: 10px; /* Отступ справа */
+    }
+
+    .user-info span {
+      font-weight: bold; /* Делаем имя пользователя жирным */
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50; /* Зеленый цвет кнопки */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
   </style>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
