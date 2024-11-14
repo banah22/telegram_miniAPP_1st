@@ -48,7 +48,7 @@ display: flex;
 </head>
 <body>
 
-  /* <div id="output"></div> */
+ // <div id="output"></div> 
 <div class="user-info">
     <img id="userAvatar" src="placeholder.jpg" alt="User Avatar">
     <span id="userName">User Name</span>
@@ -83,6 +83,12 @@ display: flex;
         logToMiniApp("User data not available.");
       }
     });
+
+     if (userData.user) {
+      document.getElementById('userName').textContent = userData.user.first_name || "Имя не указано";
+      if (user.photo_url) {
+        document.getElementById('userAvatar').src = userData.user.photo_url;
+      }
   </script>
 
 </body>
