@@ -8,7 +8,6 @@
       display: flex;
       flex-direction: column; /* Располагаем элементы вертикально */
       align-items: flex-start; /* Выровнять элементы по левому краю */
-      justify-content: space-between; /* Элементы располагаются вверху и внизу */
       height: 100vh; /* Занять всю высоту окна */
       margin: 0;
       background-color: #f0f0f0;
@@ -33,15 +32,16 @@
     }
 
     button {
+      position: absolute; /* Фиксируем кнопку внизу */
+      bottom: 20px; /* Отступ снизу */
+      left: 50%; /* Центрируем кнопку по горизонтали */
+      transform: translateX(-50%); /* Смещаем кнопку на половину её ширины для центрирования */
       padding: 10px 40px;
       font-size: 16px;
       background-color: #4CAF50; 
       color: white;
       border: none;
       border-radius: 5px;
-      cursor: pointer;
-      align-self: center; /* Центрируем кнопку по горизонтали */
-      
     }
     
     #output {
