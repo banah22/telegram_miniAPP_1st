@@ -92,4 +92,52 @@
      const outputDiv = document.getElementById('output');
      const initData = Telegram.WebApp.initData;
 
-     const params = new
+     const params = new URLSearchParams(initData);
+     const userData = Object.fromEntries(params);
+
+     if (userData.user) {
+       const user = JSON.parse(userData.user); 
+       outputDiv.textContent += `User ID: ${user.id}\n`;
+       outputDiv.textContent += `First Name: ${user.first_name || "Имя не указано"}\n`;
+       outputDiv.textContent += `Last Name: ${user.last_name || "Фамилия не указана"}\n`;
+       outputDiv.textContent += `Username: ${user.username || "Имя пользователя не указано"}\n`;
+
+       document.getElementById('userName').textContent = user.first_name || "Имя не указано";
+       if (user.photo_url) {
+         document.getElementById('userAvatar').src = user.photo_url;
+       }
+     } else {
+       outputDiv.textContent += "User data not available.";
+       document.getElementById('userName').textContent = "User data not available.";
+     }
+   });
+
+   function toggleTimer() {
+     const timerDisplay = document.getElementById('timer');
+     const timerButton = document.getElementById('timerButton');
+     
+     if (timerInterval) {
+       clearInterval(timerInterval); // Остановить таймер
+       timerInterval = null;
+       timerButton.textContent = "Start"; // Изменяем текст кнопки на "Start"
+       timerButton.style.backgroundColor = "#4CAF50"; // Возвращаем зеленый цвет
+     } else {
+       timerInterval = setInterval(() => {
+         seconds++; // Увеличиваем счетчик секунд
+         const minutes = Math.floor(seconds / 60);
+         const remainingSeconds = seconds % 60;
+         timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`; // Форматируем вывод
+       }, 1000); // Обновляем каждую секунду
+
+       timerButton.textContent = "Stop"; // Изменяем текст кнопки на "Stop"
+       timerButton.style.backgroundColor = "red"; // Меняем цвет кнопки на красный
+     }
+   }
+
+   function start() {
+     console.log("Start button clicked");
+   }
+ </script>
+
+</body>
+</html>
