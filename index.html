@@ -158,7 +158,7 @@
        function startTimer() {
          seconds = 0; // Сбросить счетчик секунд
 
-         progressCircle.style.strokeDashoffset = `${circumference/2}`; // Полоса прогресса изначально невидима
+         progressCircle.style.strokeDashoffset = `${0}`; // Полоса прогресса изначально невидима
 
          timerInterval = setInterval(() => {
            seconds++; // Увеличиваем счетчик секунд
@@ -168,8 +168,8 @@
 
            // Обновляем позицию кружочка
            const angle = (seconds / totalTime) * (2 * Math.PI); // Вычисляем угол в радианах
-           const dotX = 50 + Math.cos(angle) * (45); // Вычисляем координату X кружочка
-           const dotY = 50 + Math.sin(angle) * (45); // Вычисляем координату Y кружочка
+           const dotX = 50 + Math.sin(angle) * (45); // Вычисляем координату X кружочка
+           const dotY = 50 + Math.cos(angle) * (45); // Вычисляем координату Y кружочка
 
            document.querySelector('.progress-dot').setAttribute('cx', dotX);
            document.querySelector('.progress-dot').setAttribute('cy', dotY);
