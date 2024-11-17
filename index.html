@@ -103,16 +103,47 @@
     <script>
         let timerInterval = null; // Переменная для хранения интервала таймера
         let seconds = 0; // Переменная для отслеживания времени
-        const totalTime = 180; // Общее время в секундах
+        let totalTime = 125 || 60; // Общее время в секундах (значение из глобальной переменной USER_DURATION)
         
         const progressCircle = document.querySelector('.progress');
-        
+
         // Устанавливаем начальное состояние круга
         const circumference = 2 * Math.PI * 45; // Длина окружности
         progressCircle.style.strokeDasharray = `${circumference}`; // Устанавливаем длину окружности
         progressCircle.style.strokeDashoffset = `${circumference}`; // Начальное значение (полностью невидимо)
 
-        function toggleTimer() {
+        document.addEventListener('DOMContentLoaded', () => {
+            
+         // Инициализация Telegram Web App
+         Telegram.WebApp.ready();
+
+         // Разворачиваем приложение на весь экран
+         Telegram.WebApp.expand();
+
+         const outputDiv = document.getElementById('output');
+         const initData = Telegram.WebApp.initData;
+
+         const params = new URLSearchParams(initData);
+         const userData = Object.fromEntries(params);
+
+         if (userData.user) {
+           const user = JSON.parse(userData.user); 
+           outputDiv.textContent += `User ID: ${user.id}\n`;
+           outputDiv.textContent += `First Name: ${user.first_name || "Имя не указано"}\n`;
+           outputDiv.textContent += `Last Name: ${user.last_name || "Фамилия не указана"}\n`;
+           outputDiv.textContent += `Username: ${user.username || "Имя пользователя не указано"}\n`;
+
+           document.getElementById('userName').textContent = user.first_name || "Имя не указано";
+           if (user.photo_url) {
+             document.getElementById('userAvatar').src = user.photo_url;
+           }
+         } else {
+           outputDiv.textContent += "User data not available.";
+           document.getElementById('userName').textContent = "User data not available.";
+         }
+       });
+
+       function toggleTimer() {
          const timerButton = document.getElementById('timerButton');
          
          if (timerInterval) {
