@@ -37,7 +37,7 @@
             bottom: 20px; /* Отступ снизу */
             left: 50%; /* Центрируем кнопку по горизонтали */
             transform: translateX(-50%); /* Смещаем кнопку на половину её ширины для центрирования */
-            padding: 10px 40px;
+            padding: 10px 20px;
             font-size: 16px;
             background-color: #4CAF50; /* Зеленый цвет по умолчанию */
             color: white;
@@ -91,7 +91,7 @@
             <circle class="progress" cx="50" cy="50" r="45"></circle>
             
             <!-- Кружочек в начале прогресс-бара -->
-            <circle class="progress-dot" cx="100" cy="55" r="7" /> <!-- Увеличен радиус кружочка -->
+            <circle class="progress-dot" cx="50" cy="5" r="5" /> <!-- Увеличен радиус кружочка -->
             
             <!-- Вставка изображения в круг -->
             <image href="banah.png" x="25" y="25" height="50" width="50" />
@@ -126,6 +126,7 @@
 
          if (userData.user) {
            const user = JSON.parse(userData.user); 
+           
              outputDiv.textContent += `Username: ${user.username || "Имя пользователя не указано"}\n`;
 
            document.getElementById('userName').textContent = user.first_name || "Имя не указано";
@@ -168,7 +169,7 @@
            // Обновляем позицию кружочка
            const angle = (seconds / totalTime) * (2 * Math.PI); // Вычисляем угол в радианах
            const dotX = 50 + Math.cos(angle) * (45); // Вычисляем координату X кружочка
-           const dotY = 5 + Math.sin(angle) * (45); // Вычисляем координату Y кружочка
+           const dotY = 50 - Math.sin(angle) * (45); // Вычисляем координату Y кружочка
 
            document.querySelector('.progress-dot').setAttribute('cx', dotX);
            document.querySelector('.progress-dot').setAttribute('cy', dotY);
