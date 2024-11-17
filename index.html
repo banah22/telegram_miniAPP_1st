@@ -59,7 +59,7 @@
 
         circle {
             fill: none;
-            stroke-width: 15;
+            stroke-width: 10;
         }
 
         .background {
@@ -87,11 +87,11 @@
 
     <div id="timer">
         <svg viewBox="0 0 100 100">
-            <circle class="background" cx="50" cy="50" r="45"></circle>
-            <circle class="progress" cx="50" cy="50" r="45"></circle>
+            <circle class="background" cx="50" cy="5" r="45"></circle>
+            <circle class="progress" cx="50" cy="5" r="45"></circle>
             
             <!-- Кружочек в начале прогресс-бара -->
-            <circle class="progress-dot" cx="50" cy="50" r="5" /> <!-- Увеличен радиус кружочка -->
+            <circle class="progress-dot" cx="50" cy="5" r="5" /> <!-- Увеличен радиус кружочка -->
             
             <!-- Вставка изображения в круг -->
             <image href="banah.png" x="25" y="25" height="50" width="50" />
@@ -168,7 +168,7 @@
            // Обновляем позицию кружочка
            const angle = (seconds / totalTime) * (2 * Math.PI); // Вычисляем угол в радианах
            const dotX = 50 + Math.cos(angle) * (45); // Вычисляем координату X кружочка
-           const dotY = 50 + Math.sin(angle) * (45); // Вычисляем координату Y кружочка
+           const dotY = 5 + Math.sin(angle) * (45); // Вычисляем координату Y кружочка
 
            document.querySelector('.progress-dot').setAttribute('cx', dotX);
            document.querySelector('.progress-dot').setAttribute('cy', dotY);
