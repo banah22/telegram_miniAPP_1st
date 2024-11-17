@@ -59,7 +59,7 @@
 
         circle {
             fill: none;
-            stroke-width: 10;
+            stroke-width: 15;
         }
 
         .background {
@@ -113,11 +113,7 @@
 
          if (userData.user) {
            const user = JSON.parse(userData.user); 
-           outputDiv.textContent += `User ID: ${user.id}\n`;
-           outputDiv.textContent += `First Name: ${user.first_name || "Имя не указано"}\n`;
-           outputDiv.textContent += `Last Name: ${user.last_name || "Фамилия не указана"}\n`;
-           outputDiv.textContent += `Username: ${user.username || "Имя пользователя не указано"}\n`;
-
+           
            document.getElementById('userName').textContent = user.first_name || "Имя не указано";
            if (user.photo_url) {
              document.getElementById('userAvatar').src = user.photo_url;
