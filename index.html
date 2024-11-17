@@ -91,7 +91,7 @@
             <circle class="progress" cx="50" cy="50" r="45"></circle>
             
             <!-- Кружочек в начале прогресс-бара -->
-            <circle class="progress-dot" cx="50" cy="5" r="3" /> <!-- Начальная позиция кружочка -->
+            <circle class="progress-dot" cx="50" cy="5" r="5" /> <!-- Увеличен радиус кружочка -->
             
             <!-- Вставка изображения в круг -->
             <image href="banah.png" x="25" y="25" height="50" width="50" />
@@ -103,7 +103,7 @@
     <script>
         let timerInterval = null; // Переменная для хранения интервала таймера
         let seconds = 0; // Переменная для отслеживания времени
-        let totalTime = 125 || 60; // Общее время в секундах (значение из глобальной переменной USER_DURATION)
+        const totalTime = 180; // Общее время в секундах (можно изменить по желанию)
         
         const progressCircle = document.querySelector('.progress');
 
@@ -128,9 +128,7 @@
 
          if (userData.user) {
            const user = JSON.parse(userData.user); 
-           outputDiv.textContent += `User ID: ${user.id}\n`;
-           outputDiv.textContent += `First Name: ${user.first_name || "Имя не указано"}\n`;
-           outputDiv.textContent += `Last Name: ${user.last_name || "Фамилия не указана"}\n`;
+           
            outputDiv.textContent += `Username: ${user.username || "Имя пользователя не указано"}\n`;
 
            document.getElementById('userName').textContent = user.first_name || "Имя не указано";
@@ -172,8 +170,8 @@
 
            // Обновляем позицию кружочка
            const angle = (seconds / totalTime) * (2 * Math.PI); // Вычисляем угол в радианах
-           const dotX = 50 + Math.cos(angle) * 45; // Вычисляем координату X кружочка
-           const dotY = 50 - Math.sin(angle) * 45; // Вычисляем координату Y кружочка
+           const dotX = 50 + Math.cos(angle) * (45); // Вычисляем координату X кружочка
+           const dotY = 50 - Math.sin(angle) * (45); // Вычисляем координату Y кружочка
 
            document.querySelector('.progress-dot').setAttribute('cx', dotX);
            document.querySelector('.progress-dot').setAttribute('cy', dotY);
