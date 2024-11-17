@@ -113,10 +113,8 @@
         progressCircle.style.strokeDashoffset = `${circumference}`; // Начальное значение (полностью невидимо)
 
         document.addEventListener('DOMContentLoaded', () => {
-            
          // Инициализация Telegram Web App
          Telegram.WebApp.ready();
-
          // Разворачиваем приложение на весь экран
          Telegram.WebApp.expand();
 
@@ -128,8 +126,7 @@
 
          if (userData.user) {
            const user = JSON.parse(userData.user); 
-           
-           outputDiv.textContent += `Username: ${user.username || "Имя пользователя не указано"}\n`;
+             outputDiv.textContent += `Username: ${user.username || "Имя пользователя не указано"}\n`;
 
            document.getElementById('userName').textContent = user.first_name || "Имя не указано";
            if (user.photo_url) {
