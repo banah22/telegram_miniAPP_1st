@@ -59,7 +59,7 @@
 
         circle {
             fill: none;
-            stroke-width: 15;
+            stroke-width: 25;
         }
 
         .background {
@@ -93,38 +93,16 @@
     <script>
         let timerInterval = null; // Переменная для хранения интервала таймера
         let seconds = 0; // Переменная для отслеживания времени
-        let totalTime = 180 || 60; // Общее время в секундах (значение из глобальной переменной USER_DURATION)
+        const totalTime = 180; // Общее время в секундах
         
         const progressCircle = document.querySelector('.progress');
+        
+        // Устанавливаем начальное состояние круга
+        const circumference = 2 * Math.PI * 45; // Длина окружности
+        progressCircle.style.strokeDasharray = `${circumference}`; // Устанавливаем длину окружности
+        progressCircle.style.strokeDashoffset = `${circumference}`; // Начальное значение (полностью невидимо)
 
-        document.addEventListener('DOMContentLoaded', () => {
-            
-         // Инициализация Telegram Web App
-         Telegram.WebApp.ready();
-
-         // Разворачиваем приложение на весь экран
-         Telegram.WebApp.expand();
-
-         const outputDiv = document.getElementById('output');
-         const initData = Telegram.WebApp.initData;
-
-         const params = new URLSearchParams(initData);
-         const userData = Object.fromEntries(params);
-
-         if (userData.user) {
-           const user = JSON.parse(userData.user); 
-           
-           document.getElementById('userName').textContent = user.first_name || "Имя не указано";
-           if (user.photo_url) {
-             document.getElementById('userAvatar').src = user.photo_url;
-           }
-         } else {
-           outputDiv.textContent += "User data not available.";
-           document.getElementById('userName').textContent = "User data not available.";
-         }
-       });
-
-       function toggleTimer() {
+        function toggleTimer() {
          const timerButton = document.getElementById('timerButton');
          
          if (timerInterval) {
@@ -142,13 +120,11 @@
 
        function startTimer() {
          seconds = 0; // Сбросить счетчик секунд
-         progressCircle.style.strokeDasharray = `${2 * Math.PI * 45}`; // Устанавливаем длину окружности
-         progressCircle.style.strokeDashoffset = `${2 * Math.PI * 45}`; // Начальное значение (полностью заполнен)
 
          timerInterval = setInterval(() => {
            seconds++; // Увеличиваем счетчик секунд
            
-           const offset = (1 - (seconds / totalTime)) * (2 * Math.PI * 45); // Вычисляем смещение для прогрессии
+           const offset = circumference - (seconds / totalTime) * circumference; // Вычисляем смещение для прогрессии
            progressCircle.style.strokeDashoffset = offset; // Обновляем смещение
 
            if (seconds >= totalTime) {
@@ -164,7 +140,7 @@
 
        function resetTimer() {
          seconds = 0; 
-         progressCircle.style.strokeDashoffset = `${2 * Math.PI * 45}`; // Сбросить прогресс
+         progressCircle.style.strokeDashoffset = `${circumference}`; // Сбросить прогресс обратно к началу
        }
     </script>
 
