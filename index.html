@@ -60,14 +60,14 @@
         circle {
             fill: none;
             stroke-width: 10;
-            
+            transform: rotate(-90deg);
+            transform-origen: centre;
             
         }
 
         .background {
             stroke: #e6e6e6; /* Цвет фона круга */
-            transform: rotate(-90deg);
-            transform-origen: centre;
+            
         }
 
         .progress {
@@ -100,7 +100,7 @@
             <circle class="progress-dot" cx="50" cy="5" r="5" /> <!-- Увеличен радиус кружочка -->
             
             <!-- Вставка изображения в круг -->
-            <image href="banah.png" x="25" y="25" height="50" width="50" />
+            <image href="banah.png" x="25" y="25" height="55" width="55" />
         </svg>
     </div>
 
@@ -116,7 +116,7 @@
         // Устанавливаем начальное состояние круга
         const circumference = 2 * Math.PI * 45; // Длина окружности
         progressCircle.style.strokeDasharray = `${circumference}`; // Устанавливаем длину окружности
-        progressCircle.style.strokeDashoffset = `${circumference/3}`; // Начальное значение (полностью невидимо)
+        progressCircle.style.strokeDashoffset = `${circumference}`; // Начальное значение (полностью невидимо)
 
         document.addEventListener('DOMContentLoaded', () => {
          // Инициализация Telegram Web App
