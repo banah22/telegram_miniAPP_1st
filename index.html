@@ -124,13 +124,14 @@
     <!-- Модальное окно -->
     <div id="voteModal" class="modal">
       <div class="modal-content">
-          <h2>Голосование</h2>
-          <p>Выберите один из вариантов:</p>
+          <h2>How it was?</h2>
           <form id="voteForm">
-              <label><input type="radio" name="vote" value="option1"> Вариант 1</label><br>
-              <label><input type="radio" name="vote" value="option2"> Вариант 2</label><br>
-              <label><input type="radio" name="vote" value="option3"> Вариант 3</label><br><br>
-              <button type="button" onclick="submitVote()">Голосовать</button>
+              <div class="vote-options"> <!-- **Контейнер для опций голосования**
+              <label><input type="radio" name="vote" value="option1"> Hardwork🟢 </label>
+              <label><input type="radio" name="vote" value="option2"> Various🟡</label>
+              <label><input type="radio" name="vote" value="option3"> LazyZopa🔴 </label>
+              </div><br>
+              <button type="button" onclick="submitVote()">Vote</button>
           </form>
       </div>
     </div>
