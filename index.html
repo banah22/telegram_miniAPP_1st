@@ -99,7 +99,7 @@
         }
 
         .modal-content {
-            background-color: #fefefe;
+            background-color: #fce917;
             margin: 15% auto; /* Центрирование */
             padding: 20px;
             border: 1px solid #888;
@@ -125,12 +125,13 @@
     <div id="voteModal" class="modal">
       <div class="modal-content">
           <h2>How it was?</h2>
-          <p>Выберите один из вариантов:</p>
+         
           <form id="voteForm">
               <div class="vote-options"> <!-- **Контейнер для опций голосования** (изменение) -->
               <label><input type="radio" name="vote" value="option1"> Hardwork🟢 </label>
               <label><input type="radio" name="vote" value="option2"> Various🟡</label>
-              <label><input type="radio" name="vote" value="option3"> LazyZopa🔴 </label>
+              <label><input type="radio" name="vote" value="option3"> LazyZopa🔴 </label><br>
+                  <button type="button" onclick="submitVote()">Vote</button>
               </div><br>
               <button type="button" onclick="submitVote()">Vote</button>
           </form>
