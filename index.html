@@ -55,6 +55,14 @@
         svg {
             width: 150px; /* Ширина круга */
             height: 150px; /* Высота круга */
+
+            <!-- Определяем область обрезки -->
+                <defs>
+                    <clipPath id="circleClip">
+                        <circle cx="75" cy="75" r="45" /> <!-- Круг для обрезки -->
+                    </clipPath>
+                </defs>
+        
         }
 
         circle {
@@ -101,7 +109,7 @@
             <circle class="progress-dot" cx="95" cy="50" r="5" /> <!-- Увеличен радиус кружочка -->
             
             <!-- Вставка изображения в круг -->
-            <image href="banah.png" x="20" y="20" height="60" width="60" />
+            <image href="banah.png" x="50" y="0" height="50" width="50" clip-path="url(#circleClip)" />
         </svg>
     </div>
 
