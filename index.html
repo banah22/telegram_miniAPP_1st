@@ -95,6 +95,9 @@
 
     <div id="output"></div> 
 
+    <!-- Звуковой файл -->
+    <audio id="timerSound" src="lz.mp3"></audio>
+
     <div id="timer">
         <svg viewBox="0 0 100 100">
         <!-- Определяем область обрезки -->
@@ -122,6 +125,7 @@
         const totalTime = 180; // Общее время в секундах (можно изменить по желанию)
         
         const progressCircle = document.querySelector('.progress');
+        const sound = document.getElementById('timerSound'); // Получаем элемент аудио
 
         // Устанавливаем начальное состояние круга
         const circumference = 2 * Math.PI * 45; // Длина окружности
@@ -193,9 +197,11 @@
 
            if (seconds >= totalTime) {
              clearInterval(timerInterval); // Остановить таймер по истечении времени
+           
              timerInterval = null;
              document.getElementById('timerButton').textContent = "Start"; // Изменяем текст кнопки на "Start"
              document.getElementById('timerButton').style.backgroundColor = "#4CAF50"; // Возвращаем зеленый цвет
+            sound.play(); // Воспроизводим звук
              resetTimer(); // Сбросить прогресс
            }
            
