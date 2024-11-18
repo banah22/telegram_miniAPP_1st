@@ -110,7 +110,7 @@
         // Устанавливаем начальное состояние круга
         const circumference = 2 * Math.PI * 45; // Длина окружности
         progressCircle.style.strokeDasharray = `${circumference}`; // Устанавливаем длину окружности
-        progressCircle.style.strokeDashoffset = `${circumference}`; // Начальное значение (полностью невидимо)
+        progressCircle.style.strokeDashoffset = `${circumference/3}`; // Начальное значение (полностью невидимо)
 
         document.addEventListener('DOMContentLoaded', () => {
          // Инициализация Telegram Web App
@@ -167,8 +167,8 @@
 
            // Обновляем позицию кружочка
            const angle = (seconds / totalTime) * (2 * Math.PI); // Вычисляем угол в радианах
-           const dotX = 50 + Math.cos(angle) * (45); // Вычисляем координату X кружочка
-           const dotY = 5 + Math.sin(angle) * (45); // Вычисляем координату Y кружочка
+           const dotX = 5 + Math.cos(angle) * (45); // Вычисляем координату X кружочка
+           const dotY = 50 + Math.sin(angle) * (45); // Вычисляем координату Y кружочка
 
            document.querySelector('.progress-dot').setAttribute('cx', dotX);
            document.querySelector('.progress-dot').setAttribute('cy', dotY);
