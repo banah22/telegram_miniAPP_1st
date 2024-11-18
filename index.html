@@ -59,7 +59,7 @@
 
         circle {
             fill: none;
-            stroke-width: 10;
+            stroke-width: 5;
             transform: rotate(-90deg);
             transform-origin: center;
             
@@ -97,10 +97,10 @@
             <circle class="progress" cx="50" cy="50" r="45"></circle>
             
             <!-- Кружочек в начале прогресс-бара -->
-            <circle class="progress-dot" cx="95" cy="50" r="6" /> <!-- Увеличен радиус кружочка -->
+            <circle class="progress-dot" cx="50" cy="50" r="6" /> <!-- Увеличен радиус кружочка -->
             
             <!-- Вставка изображения в круг -->
-            <image href="banah.png" x="12.5" y="12.5" height="75" width="75" />
+            <image href="banah.png" x="25" y="25" height="50" width="50" />
         </svg>
     </div>
 
@@ -195,8 +195,8 @@
          progressCircle.style.strokeDashoffset = `${circumference}`; // Сбросить прогресс обратно к началу
 
          // Сбросить позицию кружочка обратно к началу
-         document.querySelector('.progress-dot').setAttribute('cx', '50');
-         document.querySelector('.progress-dot').setAttribute('cy', '5'); 
+         document.querySelector('.progress-dot').setAttribute('cx', '0');
+         document.querySelector('.progress-dot').setAttribute('cy', '55'); 
        }
     </script>
 
