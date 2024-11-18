@@ -92,7 +92,7 @@
             left: 0;
             top: 0;
             width: 100%;
-            height: 100%;
+            height: 20%;
             overflow: auto; /* Прокрутка, если нужно */
             background-color: rgb(0,0,0); /* Полупрозрачный фон */
             background-color: rgba(0,0,0,0.4); /* Полупрозрачный фон */
@@ -101,8 +101,8 @@
         .modal-content {
             background-color: #fce917;
             margin: 15% auto; /* Центрирование */
-            padding: 20px;
-            border: 1px solid #888;
+            padding: 10px;
+            border: 3px solid #888;
             width: 80%; /* Ширина модального окна */
         }
         
@@ -128,12 +128,12 @@
          
           <form id="voteForm">
               <div class="vote-options"> <!-- **Контейнер для опций голосования** (изменение) -->
-              <label><input type="radio" name="vote" value="option1"> Hardwork🟢 </label>
-              <label><input type="radio" name="vote" value="option2"> Various🟡</label>
-              <label><input type="radio" name="vote" value="option3"> LazyZopa🔴 </label><br>
+              <label><input type="radio" name="vote" value="option1"> Hardwork 🟢 </label>
+              <label><input type="radio" name="vote" value="option2"> Various 🟡</label>
+              <label><input type="radio" name="vote" value="option3"> LazyZopa 🔴 </label><br>
                   <button type="button" onclick="submitVote()">Vote</button>
               </div><br>
-              <button type="button" onclick="submitVote()">Vote</button>
+              
           </form>
       </div>
     </div>
