@@ -10,7 +10,7 @@
             align-items: flex-start; /* Выровнять элементы по левому краю */
             height: 100vh; /* Занять всю высоту окна */
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #e6e6e6;
             padding: 20px; /* Добавляем отступы для удобства */
             overflow: hidden; /* Скрыть прокрутку */
         }
@@ -66,7 +66,7 @@
         }
 
         .background {
-            stroke: #e6e6e6; /* Цвет фона круга */
+            stroke: #bbb0ac; /* Цвет фона круга */
             
         }
 
@@ -98,7 +98,7 @@
             <circle class="progress" cx="50" cy="50" r="45"></circle>
             
             <!-- Кружочек в начале прогресс-бара -->
-            <circle class="progress-dot" cx="50" cy="50" r="5" /> <!-- Увеличен радиус кружочка -->
+            <circle class="progress-dot" cx="95" cy="50" r="5" /> <!-- Увеличен радиус кружочка -->
             
             <!-- Вставка изображения в круг -->
             <image href="banah.png" x="20" y="20" height="60" width="60" />
@@ -134,7 +134,7 @@
          if (userData.user) {
            const user = JSON.parse(userData.user); 
            
-             outputDiv.textContent += `Username: ${user.username || "Имя пользователя не указано"}\n`;
+           //  outputDiv.textContent += `Username: ${user.username || "Имя пользователя не указано"}\n`;
 
            document.getElementById('userName').textContent = user.first_name || "Имя не указано";
            if (user.photo_url) {
