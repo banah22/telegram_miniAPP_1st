@@ -55,12 +55,7 @@
         svg {
             width: 150px; /* Ширина круга */
             height: 150px; /* Высота круга */
-<!-- Определяем область обрезки -->
-                <defs>
-                    <clipPath id="circleClip">
-                        <circle cx="75" cy="75" r="45" /> <!-- Круг для обрезки -->
-                    </clipPath>
-                </defs>
+
         
             
         }
@@ -102,6 +97,12 @@
 
     <div id="timer">
         <svg viewBox="0 0 100 100">
+        <!-- Определяем область обрезки -->
+                <defs>
+                    <clipPath id="circleClip">
+                        <circle cx="75" cy="75" r="45" /> <!-- Круг для обрезки -->
+                    </clipPath>
+                </defs>
             <circle class="background" cx="50" cy="50" r="45"></circle>
             <circle class="progress" cx="50" cy="50" r="45"></circle>
             
@@ -109,7 +110,7 @@
             <circle class="progress-dot" cx="95" cy="50" r="5" /> <!-- Увеличен радиус кружочка -->
             
             <!-- Вставка изображения в круг -->
-            <image href="banah.png" x="0" y="0" height="90" width="90" clip-path="url(#circleClip)" />
+            <image href="banah.png" x="10" y="10" height="90" width="90" clip-path="url(#circleClip)" />
         </svg>
     </div>
 
