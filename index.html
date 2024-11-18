@@ -167,8 +167,9 @@
          if (timerInterval) {
            clearInterval(timerInterval); // Остановить таймер
            timerInterval = null;
-           timerButton.textContent = "Start"; // Изменяем текст кнопки на "Start"
+           timerButton.textContent = "Start"; // Изменяем текст кнопки на "Start"   
            timerButton.style.backgroundColor = "#4CAF50"; // Возвращаем зеленый цвет
+            sound.play(); // Воспроизводим звук остановки
            resetTimer(); // Сбросить таймер
          } else {
            startTimer();
