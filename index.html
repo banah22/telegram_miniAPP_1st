@@ -100,7 +100,7 @@
             <circle class="progress-dot" cx="50" cy="5" r="5" /> <!-- Увеличен радиус кружочка -->
             
             <!-- Вставка изображения в круг -->
-            <image href="banah.png" x="25" y="25" height="55" width="55" />
+            <image href="banah.png" x="25" y="25" height="65" width="65" />
         </svg>
     </div>
 
@@ -173,8 +173,8 @@
 
            // Обновляем позицию кружочка
            const angle = (seconds / totalTime) * (2 * Math.PI); // Вычисляем угол в радианах
-           const dotX = 5 + Math.cos(angle) * (45); // Вычисляем координату X кружочка
-           const dotY = 50 + Math.sin(angle) * (45); // Вычисляем координату Y кружочка
+           const dotX = 50 + Math.cos(angle) * (45); // Вычисляем координату X кружочка
+           const dotY = 5 + Math.sin(angle) * (45); // Вычисляем координату Y кружочка
 
            document.querySelector('.progress-dot').setAttribute('cx', dotX);
            document.querySelector('.progress-dot').setAttribute('cy', dotY);
