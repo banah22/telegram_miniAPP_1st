@@ -242,7 +242,8 @@
              timerInterval = null;
              document.getElementById('timerButton').textContent = "Start"; // Изменяем текст кнопки на "Start"
              document.getElementById('timerButton').style.backgroundColor = "#4CAF50"; // Возвращаем зеленый цвет
-            sound.play(); // Воспроизводим звук
+             sound.play(); // Воспроизводим звук
+             voteModal.style.display = "block"; // **Показать модальное окно с голосованием**
              resetTimer(); // Сбросить прогресс
            }
            
