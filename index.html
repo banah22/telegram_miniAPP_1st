@@ -92,20 +92,28 @@
             left: 0;
             top: 0;
             width: 100%;
-            height: 20%;
+            height: 50%;
             overflow: auto; /* Прокрутка, если нужно */
             background-color: rgb(0,0,0); /* Полупрозрачный фон */
             background-color: rgba(0,0,0,0.4); /* Полупрозрачный фон */
         }
 
         .modal-content {
-            background-color: #fce917;
+            background-color: #09e3d1;
             margin: 15% auto; /* Центрирование */
             padding: 10px;
             border: 3px solid #888;
             width: 80%; /* Ширина модального окна */
         }
-        
+        h2 { 
+          text-align: center; 
+          /** Центрирование заголовка **/ 
+          color:#4CAF50; /** Цвет заголовка **/ 
+          font-weight:bold; /** Жирное начертание **/ 
+          /** Дополнительные стили для заголовка **/ 
+          margin-bottom :10px ; /** Отступ снизу **/ 
+          font-size :24px ; /** Размер шрифта **/
+         } 
     </style>
     
 </head>
@@ -266,7 +274,7 @@
           const selectedOption = form.vote.value;
 
           if (selectedOption) {
-              alert(`Вы выбрали ${selectedOption}`); // Здесь можно обработать результат голосования
+              //alert(`Вы выбрали ${selectedOption}`); // Здесь можно обработать результат голосования
               voteModal.style.display = "none"; // Скрыть модальное окно после голосования
           } else {
               alert("Пожалуйста, выберите вариант!");
