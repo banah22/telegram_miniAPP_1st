@@ -388,6 +388,8 @@
                 votes.push(Option); // Добавляем выбранный вариант в массив votes
                 sound1.play(); 
                 document.getElementById('voteModal').style.display = 'none'; // Скрыть модальное окно после голосования
+                console.log(votes); // Выводим массив votes в консоль для отладки
+                return;
             } else {
                 alert("Пожалуйста, выберите вариант!");
             }
