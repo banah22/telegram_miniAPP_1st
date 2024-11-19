@@ -159,18 +159,12 @@
          .option3 { background-color :#F44336 ; } /** Красная кнопка **/ 
         
          /* Стили для контейнера кнопок */
-        .button-container { 
-            position: absolute; /* Фиксируем кнопку внизу */
-            bottom: 10px; /*  Отступ снизу */
-            
-            display:flex; /* Используем flexbox для расположения кнопок в ряд */ 
-            justify-content:center; /* Центрируем кнопки по горизонтали */ 
-            
-             margin-top: 20px; /* Отодвигаем кнопки вниз */
-             
+                  
        .button-container { 
            position: absolute; /* Фиксируем кнопку внизу */
            bottom: 10px; /*  Отступ снизу */
+           left: 50%; /* Центрируем кнопки по горизонтали */
+           transform: translateX(-50%); /* Смещаем на половину ширины для центрирования */
            
            display:flex ; /** Используем flexbox для расположения кнопок в ряд **/ 
            justify-content: center ; /** Центрируем кнопки по горизонтали **/ 
@@ -178,7 +172,7 @@
          }      
            
            
-        }
+        
         
     </style>
     
