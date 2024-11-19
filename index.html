@@ -131,7 +131,14 @@
             margin: 0 2px; /* Устанавливаем отступ сверху и снизу для каждого элемента */
          }
             
-       
+       h2 { 
+          text-align: center; 
+          color:#050505; 
+          font-weight:bold; 
+          /** Дополнительные стили для заголовка **/ 
+          margin-bottom :10px ; /** Отступ снизу **/ 
+          font-size :24px ; /** Размер шрифта **/
+         } 
         
         .vote-button {
             padding: 10px; /* Отступы внутри кнопок */
@@ -191,25 +198,25 @@
  <!-- Модальное окно -->
     <div id="voteModal" class="modal">
       <div class="modal-content">
-         <h2>How Am I Doing?</h2> <!-- Заголовок будет центрирован -->
+            <h2>How Am I Doing?</h2> <!-- Заголовок будет центрирован -->
           
             <div class="button-container"> <!-- Контейнер для кнопок голосования -->
-            <button type="button" class="vote-button option1" onclick="submitVote('option1')">
-                <div>Hardwork</div>
-                <div>🟢</div> <!-- Значок цвета -->
-            </button> <!-- Зеленая кнопка -->
-            <button type="button" class="vote-button option2" onclick="submitVote('option2')">
-                <div>Various</div>
-                <div>🟡</div> <!-- Значок цвета -->
-            </button> <!-- Желтая кнопка -->
-            <button type="button" class="vote-button option3" onclick="submitVote('option3')">
-                <div>LazyZopa</div>
-                <div>🔴</div> <!-- Значок цвета -->
-            </button> <!-- Красная кнопка -->
+                <button type="button" class="vote-button option1" onclick="submitVote('option1')">
+                    <div>Hardwork</div>
+                    <div>🟢</div> <!-- Значок цвета -->
+                </button> <!-- Зеленая кнопка -->
+                <button type="button" class="vote-button option2" onclick="submitVote('option2')">
+                    <div>Various</div>
+                    <div>🟡</div> <!-- Значок цвета -->
+                </button> <!-- Желтая кнопка -->
+                <button type="button" class="vote-button option3" onclick="submitVote('option3')">
+                    <div>LazyZopa</div>
+                    <div>🔴</div> <!-- Значок цвета -->
+                </button> <!-- Красная кнопка -->
             </div>
         
-  </div>
-</div>
+      </div>
+    </div>
 
 
     <!-- Модальное окно для статистики -->
