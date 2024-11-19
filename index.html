@@ -73,7 +73,9 @@
         }
 
         button {
-            position: absolute; /* Фиксируем кнопку внизу */
+            position: relative; /* Изменяем на относительное позиционирование */
+            margin-top: auto; /* Позволяет кнопке "Старт" находиться внизу */
+            
             bottom: 20px; /* Отступ снизу */
             left: 50%; /* Центрируем кнопку по горизонтали */
             transform: translateX(-50%); /* Смещаем кнопку на половину её ширины для центрирования */
@@ -131,7 +133,12 @@
          .option2 { background-color :#FFC107 ; } /** Желтая кнопка **/ 
          .option3 { background-color :#F44336 ; } /** Красная кнопка **/ 
         
-         
+         /* Стили для контейнера кнопок */
+.button-container { 
+   display:flex; /* Используем flexbox для расположения кнопок в ряд */ 
+   justify-content:center; /* Центрируем кнопки по горизонтали */ 
+   margin-top:10px; /* Отступ сверху для кнопок */ 
+}
         
     </style>
     
@@ -148,17 +155,21 @@
     <!-- Звуковой файл -->
     <audio id="timerSound" src="lz.mp3"></audio>
 
-  <!-- Модальное окно -->
-    <div id="voteModal" class="modal">
-      
-          <h2>Голосование</h2> <!-- Заголовок будет центрирован -->
-         
-          
-              
-                  <button type="button" class="vote-button option1" onclick="submitVote('option1')">Hardwork</button> <!-- Зеленая кнопка -->
-              
-    </div>
+ <!-- Модальное окно -->
+<div id="voteModal" class="modal">
+  <div class="modal-content">
+      <h2>Голосование</h2> <!-- Заголовок будет центрирован -->
+      <form id="voteForm">
+          <div class="button-container"> <!-- Контейнер для кнопок голосования -->
+              <button type="button" class="vote-button option1" onclick="submitVote('option1')">Hardwork🟢</button> <!-- Зеленая кнопка -->
+              <button type="button" class="vote-button option2" onclick="submitVote('option2')">Various🟡</button> <!-- Желтая кнопка -->
+              <button type="button" class="vote-button option3" onclick="submitVote('option3')">LazyZopa🔴</button> <!-- Красная кнопка -->
+          </div>
+      </form>
+  </div>
+</div>
 
+<button id="timerButton" onclick="toggleTimer()">Start</button> <!-- Кнопка "Старт" -->
     
     <div id="timer">
         <svg viewBox="0 0 100 100">
