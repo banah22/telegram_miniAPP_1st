@@ -85,7 +85,17 @@
             border: none;
             border-radius: 5px;
         } 
-        
+
+        #stButton {
+            padding: 10px 10px; /* Уменьшаем размер кнопки "ST" */
+            font-size: 16px; 
+            background-color: yellow; /* Желтый цвет */
+            color: black;
+            border: none;
+            border-radius: 5px;
+        }
+
+
         /* Стили для модального окна */
         .modal {
             display: none; /* Скрыто по умолчанию */
@@ -108,6 +118,13 @@
             width: 80%; /* Ширина модального окна */
            
         }
+        
+        .statistics {
+             display: flex; 
+             justify-content: center; 
+             margin-top: 10px;
+         }
+        
         h2 { 
           text-align: center; 
           /** Центрирование заголовка **/ 
@@ -184,7 +201,19 @@
 </div>
 
 <button id="timerButton" onclick="toggleTimer()">Start</button> <!-- Кнопка "Старт" -->
-    
+<button id="stButton" onclick="showStatistics()">ST</button> <!-- Кнопка "ST" -->
+
+    <!-- Модальное окно для статистики -->
+    <div id="statsModal" class="modal">
+      <div class="modal-content">
+          <h2>Статистика голосования</h2>
+          <div id="statisticsContainer" class="statistics">
+              <!-- Здесь будут кружки для отображения статистики -->
+          </div>
+          <button onclick="closeStatistics()">Закрыть</button>
+      </div>
+    </div>
+
     <div id="timer">
         <svg viewBox="0 0 100 100">
         <!-- Определяем область обрезки -->
@@ -252,6 +281,9 @@
          }
        });
 
+    let votes = []; // Массив для хранения результатов голосования
+
+
        function toggleTimer() {
              const timerButton = document.getElementById('timerButton');
              
@@ -268,6 +300,28 @@
              }
          }
 
+        function showStatistics() {
+            const statsModal = document.getElementById('statsModal');
+            const statisticsContainer = document.getElementById('statisticsContainer');
+            
+            // Очищаем предыдущую статистику
+            statisticsContainer.innerHTML = '';
+
+            // Пример заполнения статистики (вы можете заменить это на свои данные)
+            votes.forEach(vote => {
+                const circle = document.createElement('div');
+                circle.className = 'circle';
+                circle.style.backgroundColor = vote; // Цвет кружка зависит от выбора
+                statisticsContainer.appendChild(circle);
+            });
+
+            statsModal.style.display = 'block'; // Показываем модальное окно
+        }
+
+        function closeStatistics() {
+            const statsModal = document.getElementById('statsModal');
+            statsModal.style.display = 'none'; // Скрываем модальное окно
+        }
 
        function startTimer() {
          seconds = 0; // Сбросить счетчик секунд
