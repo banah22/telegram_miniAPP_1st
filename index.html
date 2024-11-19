@@ -124,6 +124,7 @@
              display: flex; 
              justify-content: center; 
              margin-top: 10px;
+            margin-right: 2px;
          }
         
         h2 { 
@@ -218,9 +219,9 @@
     <!-- Модальное окно для статистики -->
     <div id="statsModal" class="modal">
       <div class="modal-content">
-          <h2>Статистика голосования</h2>
+          <h2>Statistics</h2>
           <div id="statisticsContainer" class="statistics"></div>
-          <button onclick="closeStatistics()">Закрыть</button>
+          
       </div>
     </div>
 
@@ -309,7 +310,7 @@
 
         
           
-        function showStatistics() {
+    function showStatistics() {
     const statsModal = document.getElementById('statsModal');
     const statisticsContainer = document.getElementById('statisticsContainer');
 
@@ -335,21 +336,6 @@
     statsModal.style.display = 'block'; // Показываем модальное окно со статистикой
 }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        function closeStatistics() {
-            const statsModal = document.getElementById('statsModal');
-            statsModal.style.display = 'none'; // Скрываем модальное окно
-        }
-
         
         function startTimer() {
          seconds = 0; // Сбросить счетчик секунд
