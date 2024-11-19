@@ -72,20 +72,7 @@
             fill: #4CAF50; /* Цвет кружочка в начале прогресс-бара */
         }
 
-        button {
-            position: relative; /* Изменяем на относительное позиционирование */
-            margin-top: auto; /* Позволяет кнопке "Старт" находиться внизу */
-            
-            bottom: 20px; /* Отступ снизу */
-            left: 50%; /* Центрируем кнопку по горизонтали */
-            transform: translateX(-50%); /* Смещаем кнопку на половину её ширины для центрирования */
-            padding: 10px 40px;
-            font-size: 16px;
-            background-color: #4CAF50; /* Зеленый цвет по умолчанию */
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
+        
         #timerButton { /* Изменяем селектор на ID кнопки "Старт" */
             position: absolute; /* Фиксируем кнопку "Старт" внизу */
             bottom: 20px; 
@@ -98,6 +85,7 @@
             border: none;
             border-radius: 5px;
         } 
+        
         /* Стили для модального окна */
         .modal {
             display: none; /* Скрыто по умолчанию */
