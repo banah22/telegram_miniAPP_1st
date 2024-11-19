@@ -71,6 +71,19 @@
         .progress-dot {
             fill: #4CAF50; /* Цвет кружочка в начале прогресс-бара */
         }
+
+        button {
+            position: absolute; /* Фиксируем кнопку внизу */
+            bottom: 20px; /* Отступ снизу */
+            left: 50%; /* Центрируем кнопку по горизонтали */
+            transform: translateX(-50%); /* Смещаем кнопку на половину её ширины для центрирования */
+            padding: 10px 40px;
+            font-size: 16px;
+            background-color: #4CAF50; /* Зеленый цвет по умолчанию */
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
         
         /* Стили для модального окна */
         .modal {
@@ -117,11 +130,7 @@
          .option2 { background-color :#FFC107 ; } /** Желтая кнопка **/ 
          .option3 { background-color :#F44336 ; } /** Красная кнопка **/ 
         
-         .button-container { 
-           display:flex ; /** Используем flexbox для расположения кнопок в ряд **/ 
-           justify-content:center ; /** Центрируем кнопки по горизонтали **/ 
-           margin-top :10px ; /** Отступ сверху для кнопок **/ 
-         }
+         
         
     </style>
     
@@ -144,11 +153,11 @@
           <h2>Голосование</h2> <!-- Заголовок будет центрирован -->
          
           <form id="voteForm">
-              <div class="button-container"> <!-- Контейнер для кнопок голосования -->
+              
                   <button type="button" class="vote-button option1" onclick="submitVote('option1')">Hardwork</button> <!-- Зеленая кнопка -->
                   <button type="button" class="vote-button option2" onclick="submitVote('option2')">Various</button> <!-- Желтая кнопка -->
                   <button type="button" class="vote-button option3" onclick="submitVote('option3')">LazyZopa</button> <!-- Красная кнопка -->
-              </div>
+             
           </form>
       </div>
     </div>
