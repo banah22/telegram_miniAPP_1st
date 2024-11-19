@@ -189,7 +189,7 @@
     <div id="voteModal" class="modal">
       <div class="modal-content">
          <h2>How Am I Doing?</h2> <!-- Заголовок будет центрирован -->
-          <form id="voteForm">
+          
             <div class="button-container"> <!-- Контейнер для кнопок голосования -->
             <button type="button" class="vote-button option1" onclick="submitVote('option1')">
                 <div>Hardwork</div>
@@ -204,7 +204,7 @@
                 <div>🔴</div> <!-- Значок цвета -->
             </button> <!-- Красная кнопка -->
             </div>
-        </form>
+        
   </div>
 </div>
 
@@ -376,8 +376,7 @@
         
      
       function submitVote(Option) {
-            const form = document.getElementById('voteForm');
-          
+            
             if (Option) {
                 votes.push(Option); // Добавляем выбранный вариант в массив votes
                 sound1.play(); 
