@@ -108,14 +108,14 @@
             position: relative; /* Добавлено для позиционирования внутренних элементов */
             background-color: #ebffe0;
             margin: 15% auto; /* Центрирование */
-            padding: 10px;
+            padding: 20px;
             border: 1px solid #f0f7cd;
             width: 80%; /* Ширина модального окна */
             max-height: 80vh;
 
             display: flex;
             flex-direction: column; /* Располагаем элементы вертикально */
-            align-items: flex-start; /* Выровнять элементы по левому краю */
+            
         }
 
         
@@ -162,13 +162,20 @@
         .button-container { 
             position: absolute; /* Фиксируем кнопку внизу */
             bottom: 10px; /*  Отступ снизу */
-             transform: translateX(-50%); /* Смещаем кнопку на половину её ширины для центрирования */
+            
             display:flex; /* Используем flexbox для расположения кнопок в ряд */ 
             justify-content:center; /* Центрируем кнопки по горизонтали */ 
             
              margin-top: 20px; /* Отодвигаем кнопки вниз */
              
-             
+       .button-container { 
+           position: absolute; /* Фиксируем кнопку внизу */
+           bottom: 10px; /*  Отступ снизу */
+           
+           display:flex ; /** Используем flexbox для расположения кнопок в ряд **/ 
+           justify-content: center ; /** Центрируем кнопки по горизонтали **/ 
+           margin-top: 20px ; /** Отступ сверху для кнопок **/ 
+         }      
            
            
         }
