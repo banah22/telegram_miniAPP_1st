@@ -118,15 +118,19 @@
           font-size :24px ; /** Размер шрифта **/
          } 
         
-        .vote-button { 
-           padding :10px ; /** Отступы внутри кнопок **/ 
-           border :none ; /** Убираем рамку **/ 
-           border-radius :5px ; /** Закругление углов **/ 
-           color :white ; /** Цвет текста **/ 
-           font-size :19px ; /** Размер шрифта **/ 
-           cursor :pointer ; /** Курсор при наведении **/ 
-           margin :5px ; /** Отступ между кнопками **/ 
-         } 
+        .vote-button {
+        padding: 10px; /* Отступы внутри кнопок */
+        border: none; /* Убираем рамку */
+        border-radius: 5px; /* Закругление углов */
+        color: white; /* Цвет текста */
+        font-size: 16px; /* Размер шрифта */
+        cursor: pointer; /* Курсор при наведении */
+        margin: 5px; /* Отступ между кнопками */
+        width: 30%; /* Ширина кнопок */
+        display: flex; /* Используем flexbox для выравнивания содержимого */
+        flex-direction: column; /* Располагаем элементы вертикально */
+        align-items: center; /* Центрируем содержимое по горизонтали */
+    }
 
          .option1 { background-color :#4CAF50 ; } /** Зеленая кнопка **/ 
          .option2 { background-color :#FFC107 ; } /** Желтая кнопка **/ 
@@ -161,10 +165,19 @@
       <h2>How Am I Doing?</h2> <!-- Заголовок будет центрирован -->
       <form id="voteForm">
           <div class="button-container"> <!-- Контейнер для кнопок голосования -->
-              <button type="button" class="vote-button option1" onclick="submitVote('option1')">Hardwork🟢</button> <!-- Зеленая кнопка -->
-              <button type="button" class="vote-button option2" onclick="submitVote('option2')">Various🟡</button> <!-- Желтая кнопка -->
-              <button type="button" class="vote-button option3" onclick="submitVote('option3')">LazyZopa🔴</button> <!-- Красная кнопка -->
-          </div>
+    <button type="button" class="vote-button option1" onclick="submitVote('option1')">
+        <div>Hardwork</div>
+        <div>🟢</div> <!-- Значок цвета -->
+    </button> <!-- Зеленая кнопка -->
+    <button type="button" class="vote-button option2" onclick="submitVote('option2')">
+        <div>Various</div>
+        <div>🟡</div> <!-- Значок цвета -->
+    </button> <!-- Желтая кнопка -->
+    <button type="button" class="vote-button option3" onclick="submitVote('option3')">
+        <div>LazyZopa</div>
+        <div>🔴</div> <!-- Значок цвета -->
+    </button> <!-- Красная кнопка -->
+</div>
       </form>
   </div>
 </div>
