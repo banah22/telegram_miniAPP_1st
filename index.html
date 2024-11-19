@@ -73,8 +73,9 @@
         }
 
         
+
         #timerButton { /* Изменяем селектор на ID кнопки "Старт" */
-            position: absolute; /* Фиксируем кнопку "Старт" внизу */
+            
             bottom: 20px; 
             left: 50%; 
             transform: translateX(-50%); 
@@ -166,6 +167,11 @@
     
 </head>
 <body>
+
+     <div class="button-container">
+        <button id="timerButton" onclick="toggleTimer()">Start</button> <!-- Кнопка "Старт" -->
+        <button id="stButton" onclick="showStatistics()">ST</button> <!-- Кнопка "ST" -->
+    </div>
 
     <div class="user-info">
         <img id="userAvatar" alt="User Avatar">
