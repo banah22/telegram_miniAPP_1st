@@ -308,9 +308,9 @@
          }
 
         
-        function showStatistics() {
-    const statsModal = document.getElementById('statsModal');
-    const statisticsContainer = document.getElementById('statisticsContainer');
+    function showStatistics() {
+        const statsModal = document.getElementById('statsModal');
+        const statisticsContainer = document.getElementById('statisticsContainer');
 
     // Очищаем предыдущую статистику
     statisticsContainer.innerHTML = '';
@@ -380,8 +380,7 @@
                 votes.push(Option); // Добавляем выбранный вариант в массив votes
                 sound1.play(); 
                 document.getElementById('voteModal').style.display = 'none'; // Скрыть модальное окно после голосования
-                console.log(votes); // Выводим массив votes в консоль для отладки
-                return;
+                
             } else {
                 alert("Пожалуйста, выберите вариант!");
             }
@@ -390,6 +389,9 @@
       window.onclick = function(event) {
           if (event.target == voteModal) {
               voteModal.style.display = "none"; // Закрыть модальное окно при клике вне его области
+          }
+          if (event.target == statsModal) {
+              statsModal.style.display = "none"; // Закрыть модальное окно при клике вне его области
           }
       }
     </script>
