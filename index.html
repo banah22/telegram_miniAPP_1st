@@ -79,17 +79,18 @@
             bottom: 20px; 
             left: 50%; 
             transform: translateX(-50%); 
-            padding: 10px 40px;
+            padding: 10px 60px;
             font-size: 16px;
             background-color: #4CAF50; 
             color: white;
             border: none;
             border-radius: 5px;
+             margin-right: 10px; /* Отступ между кнопками */
         } 
 
         #stButton {
          
-            padding: 10px 10px; /* Уменьшаем размер кнопки "ST" */
+            padding: 10px 10px; /* размер кнопки "ST" */
             font-size: 16px; 
             background-color: yellow; /* Желтый цвет */
             color: black;
@@ -161,10 +162,12 @@
             position: absolute; /* Фиксируем кнопку внизу */
             bottom: 20px; /* Отступ снизу */
             left: 50%; /* Центрируем кнопку по горизонтали */
+            transform: translateX(-50%); /* Смещаем кнопку на половину её ширины для центрирования */
            display:flex; /* Используем flexbox для расположения кнопок в ряд */ 
            justify-content:center; /* Центрируем кнопки по горизонтали */ 
             margin-top: auto; /* Отодвигаем кнопки вниз */
             margin-bottom: 20px; /* Отступ снизу для кнопок */
+           
            
         }
         
@@ -175,7 +178,7 @@
 
      <div class="button-container">
         <button id="timerButton" onclick="toggleTimer()">Start</button> <!-- Кнопка "Старт" -->
-        <button id="stButton" onclick="showStatistics()">ST</button> <!-- Кнопка "ST" -->
+        <button id="stButton" onclick="showStatistics()">📈</button> <!-- Кнопка "ST" -->
     </div>
 
     <div class="user-info">
