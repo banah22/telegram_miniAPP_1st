@@ -160,7 +160,9 @@
         .button-container { 
            display:flex; /* Используем flexbox для расположения кнопок в ряд */ 
            justify-content:center; /* Центрируем кнопки по горизонтали */ 
-           margin-top:10px; /* Отступ сверху для кнопок */ 
+            margin-top: auto; /* Отодвигаем кнопки вниз */
+            margin-bottom: 20px; /* Отступ снизу для кнопок */
+           
         }
         
     </style>
@@ -207,8 +209,6 @@
   </div>
 </div>
 
-<button id="timerButton" onclick="toggleTimer()">Start</button> <!-- Кнопка "Старт" -->
-<button id="stButton" onclick="showStatistics()">ST</button> <!-- Кнопка "ST" -->
 
     <!-- Модальное окно для статистики -->
     <div id="statsModal" class="modal">
