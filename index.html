@@ -32,16 +32,7 @@
             font-weight: bold; 
         }
 
-        button {
-            
-            padding: 10px 40px;
-            font-size: 16px;
-            background-color: #4CAF50; /* Зеленый цвет по умолчанию */
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
+        
         #timer {
             position: absolute; /* Позиционируем таймер по центру */
             top: 50%; /* Центрируем по вертикали */
@@ -101,6 +92,7 @@
             padding: 10px;
             border: 1px solid #f0f7cd;
             width: 80%; /* Ширина модального окна */
+            min-height: 200px; /* Установите минимальную высоту модального окна, чтобы кнопки не располагались слишком близко к верху */
         }
         h2 { 
           text-align: center; 
@@ -146,7 +138,7 @@
     <!-- Звуковой файл -->
     <audio id="timerSound" src="lz.mp3"></audio>
 
-   <!-- Модальное окно -->
+  <!-- Модальное окно -->
     <div id="voteModal" class="modal">
       <div class="modal-content">
           <h2>Голосование</h2> <!-- Заголовок будет центрирован -->
@@ -160,7 +152,6 @@
           </form>
       </div>
     </div>
-
 
     
     <div id="timer">
@@ -230,21 +221,21 @@
        });
 
        function toggleTimer() {
-         const timerButton = document.getElementById('timerButton');
-         
-         if (timerInterval) {
-           clearInterval(timerInterval); // Остановить таймер
-           timerInterval = null;
-           timerButton.textContent = "Start"; // Изменяем текст кнопки на "Start"   
-           timerButton.style.backgroundColor = "#4CAF50"; // Возвращаем зеленый цвет
-            sound.play(); // Воспроизводим звук остановки
-           resetTimer(); // Сбросить таймер
-         } else {
-           startTimer();
-           timerButton.textContent = "Stop"; // Изменяем текст кнопки на "Stop"
-           timerButton.style.backgroundColor = "red"; // Меняем цвет кнопки на красный
+             const timerButton = document.getElementById('timerButton');
+             
+             if (timerInterval) {
+                 clearInterval(timerInterval); // Остановить таймер
+                 timerInterval = null;
+                 timerButton.textContent = "Start"; // Изменяем текст кнопки на "Start"
+                 resetTimer(); // Сбросить таймер
+                 voteModal.style.display = "none"; // Скрыть модальное окно при остановке
+             } else {
+                 startTimer();
+                 timerButton.textContent = "Stop"; // Изменяем текст кнопки на "Stop"
+                 timerButton.style.backgroundColor = "red"; // Меняем цвет кнопки на красный
+             }
          }
-       }
+
 
        function startTimer() {
          seconds = 0; // Сбросить счетчик секунд
