@@ -76,9 +76,6 @@
 
         #timerButton { /* Изменяем селектор на ID кнопки "Старт" */
             
-           // bottom: 20px; 
-            //left: 50%; 
-            //transform: translateX(-50%); 
             padding: 10px 60px;
             font-size: 16px;
             background-color: #4CAF50; 
@@ -93,7 +90,7 @@
          
             padding: 10px 10px; /* размер кнопки "ST" */
             font-size: 16px; 
-            background-color: yellow; /* Желтый цвет */
+            background-color: #fcfbde; 
             color: black;
             border: none;
             border-radius: 5px;
@@ -151,7 +148,7 @@
         display: flex; /* Используем flexbox для выравнивания содержимого */
         flex-direction: column; /* Располагаем элементы вертикально */
         align-items: center; /* Центрируем содержимое по горизонтали */
-    }
+        }
 
          .option1 { background-color :#4CAF50 ; } /** Зеленая кнопка **/ 
          .option2 { background-color :#FFC107 ; } /** Желтая кнопка **/ 
@@ -195,24 +192,24 @@
     <audio id="timerSound1" src="tuk2.mp3"></audio>
 
  <!-- Модальное окно -->
-<div id="voteModal" class="modal">
-  <div class="modal-content">
-      <h2>How Am I Doing?</h2> <!-- Заголовок будет центрирован -->
-      <form id="voteForm">
-          <div class="button-container"> <!-- Контейнер для кнопок голосования -->
-    <button type="button" class="vote-button option1" onclick="submitVote('option1')">
-        <div>Hardwork</div>
-        <div>🟢</div> <!-- Значок цвета -->
-    </button> <!-- Зеленая кнопка -->
-    <button type="button" class="vote-button option2" onclick="submitVote('option2')">
-        <div>Various</div>
-        <div>🟡</div> <!-- Значок цвета -->
-    </button> <!-- Желтая кнопка -->
-    <button type="button" class="vote-button option3" onclick="submitVote('option3')">
-        <div>LazyZopa</div>
-        <div>🔴</div> <!-- Значок цвета -->
-    </button> <!-- Красная кнопка -->
-</div>
+    <div id="voteModal" class="modal">
+      <div class="modal-content">
+          <h2>How Am I Doing?</h2> <!-- Заголовок будет центрирован -->
+          <form id="voteForm">
+              <div class="button-container"> <!-- Контейнер для кнопок голосования -->
+        <button type="button" class="vote-button option1" onclick="submitVote('option1')">
+            <div>Hardwork</div>
+            <div>🟢</div> <!-- Значок цвета -->
+        </button> <!-- Зеленая кнопка -->
+        <button type="button" class="vote-button option2" onclick="submitVote('option2')">
+            <div>Various</div>
+            <div>🟡</div> <!-- Значок цвета -->
+        </button> <!-- Желтая кнопка -->
+        <button type="button" class="vote-button option3" onclick="submitVote('option3')">
+            <div>LazyZopa</div>
+            <div>🔴</div> <!-- Значок цвета -->
+        </button> <!-- Красная кнопка -->
+    </div>
       </form>
   </div>
 </div>
@@ -222,13 +219,12 @@
     <div id="statsModal" class="modal">
       <div class="modal-content">
           <h2>Статистика голосования</h2>
-          <div id="statisticsContainer" class="statistics">
-              <!-- Здесь будут кружки для отображения статистики -->
-          </div>
+          <div id="statisticsContainer" class="statistics"></div>
           <button onclick="closeStatistics()">Закрыть</button>
       </div>
     </div>
 
+    
     <div id="timer">
         <svg viewBox="0 0 100 100">
         <!-- Определяем область обрезки -->
@@ -295,9 +291,9 @@
          }
        });
 
-    let votes = []; // Массив для хранения результатов голосования
-
-
+        
+        let votes = []; // Массив для хранения результатов голосования
+    
        function toggleTimer() {
              const timerButton = document.getElementById('timerButton');
              
@@ -314,22 +310,23 @@
              }
          }
 
+        
         function showStatistics() {
             const statsModal = document.getElementById('statsModal');
             const statisticsContainer = document.getElementById('statisticsContainer');
-            
+
             // Очищаем предыдущую статистику
             statisticsContainer.innerHTML = '';
 
-            // Пример заполнения статистики (вы можете заменить это на свои данные)
+            // Отображаем результаты голосования
             votes.forEach(vote => {
                 const circle = document.createElement('div');
                 circle.className = 'circle';
-                circle.style.backgroundColor = vote; // Цвет кружка зависит от выбора
+                circle.style.backgroundColor = vote === 'green' ? '#4CAF50' : vote === 'yellow' ? '#FFC107' : '#F44336'; // Цвет кружка зависит от выбора
                 statisticsContainer.appendChild(circle);
             });
 
-            statsModal.style.display = 'block'; // Показываем модальное окно
+            statsModal.style.display = 'block'; // Показываем модальное окно со статистикой
         }
 
         function closeStatistics() {
@@ -337,7 +334,8 @@
             statsModal.style.display = 'none'; // Скрываем модальное окно
         }
 
-       function startTimer() {
+        
+        function startTimer() {
          seconds = 0; // Сбросить счетчик секунд
 
 
@@ -380,10 +378,23 @@
 
         function submitVote(option) { // Изменено на функцию с параметром выбора
             sound1.play(); // Здесь можно обработать результат голосования
+            
              voteModal.style.display = "none"; // Скрыть модальное окно после голосования
          }
          
-      
+      function submitVote() {
+            const form = document.getElementById('voteForm');
+            const selectedOption = form.vote.value;
+
+            if (selectedOption) {
+                votes.push(selectedOption); // Добавляем выбранный вариант в массив votes
+                sound1.play(); 
+                document.getElementById('voteModal').style.display = 'none'; // Скрыть модальное окно после голосования
+            } else {
+                alert("Пожалуйста, выберите вариант!");
+            }
+        }
+
       window.onclick = function(event) {
           if (event.target == voteModal) {
               voteModal.style.display = "none"; // Закрыть модальное окно при клике вне его области
