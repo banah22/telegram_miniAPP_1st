@@ -86,7 +86,18 @@
             border: none;
             border-radius: 5px;
         }
-        
+        #timerButton { /* Изменяем селектор на ID кнопки "Старт" */
+            position: absolute; /* Фиксируем кнопку "Старт" внизу */
+            bottom: 20px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            padding: 10px 40px;
+            font-size: 16px;
+            background-color: #4CAF50; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+        } 
         /* Стили для модального окна */
         .modal {
             display: none; /* Скрыто по умолчанию */
@@ -156,12 +167,17 @@
     <audio id="timerSound" src="lz.mp3"></audio>
 
  <!-- Модальное окно -->
-    <div id="voteModal" class="button-container"> <!-- Контейнер для кнопок голосования -->
+<div id="voteModal" class="modal">
+  <div class="modal-content">
+      <h2>Голосование</h2> <!-- Заголовок будет центрирован -->
+      <form id="voteForm">
+          <div class="button-container"> <!-- Контейнер для кнопок голосования -->
               <button type="button" class="vote-button option1" onclick="submitVote('option1')">Hardwork🟢</button> <!-- Зеленая кнопка -->
               <button type="button" class="vote-button option2" onclick="submitVote('option2')">Various🟡</button> <!-- Желтая кнопка -->
               <button type="button" class="vote-button option3" onclick="submitVote('option3')">LazyZopa🔴</button> <!-- Красная кнопка -->
-          
-    </div>
+          </div>
+      </form>
+  </div>
 </div>
 
 <button id="timerButton" onclick="toggleTimer()">Start</button> <!-- Кнопка "Старт" -->
