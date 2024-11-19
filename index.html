@@ -308,9 +308,10 @@
          }
 
         
-    function showStatistics() {
-        const statsModal = document.getElementById('statsModal');
-        const statisticsContainer = document.getElementById('statisticsContainer');
+          
+        function showStatistics() {
+    const statsModal = document.getElementById('statsModal');
+    const statisticsContainer = document.getElementById('statisticsContainer');
 
     // Очищаем предыдущую статистику
     statisticsContainer.innerHTML = '';
@@ -318,12 +319,32 @@
     // Выводим все значения из массива votes на экран
     votes.forEach(vote => {
         const voteText = document.createElement('div');
-        voteText.textContent = vote; // Просто выводим значение из массива
+        
+        // Определяем текст в зависимости от выбора
+        if (vote === 'option1') {
+            voteText.textContent = '🟢'; // Зеленый кружок
+        } else if (vote === 'option2') {
+            voteText.textContent = '🟡'; // Желтый кружок
+        } else if (vote === 'option3') {
+            voteText.textContent = '🔴'; // Красный кружок
+        }
+
         statisticsContainer.appendChild(voteText); // Добавляем текст в контейнер
     });
 
     statsModal.style.display = 'block'; // Показываем модальное окно со статистикой
 }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         function closeStatistics() {
             const statsModal = document.getElementById('statsModal');
             statsModal.style.display = 'none'; // Скрываем модальное окно
