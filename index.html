@@ -274,8 +274,18 @@
                 document.getElementById('userName').textContent = "User data not available.";
                 document.getElementById('userAvatar').src = 'banah.png';
             }
-        
-            
+
+            // Обработка параметров URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const variable1 = urlParams.get('var1');
+
+            variable1 = parseInt(variable1, 10);  // parseInt с основанием 10 (десятичная система)
+
+            if (outputDiv) {  // Проверка на существование outputDiv
+                outputDiv.textContent += `\nЗначение переменной var1: ${variable1}`;
+            } else {
+                console.error("Элемент с id 'output' не найден!");
+            }
         });
                 
 
