@@ -252,6 +252,12 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
     <script>
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const variable1 = urlParams.get('var1');
+     
+         console.log("Полученные переменные:", variable1);
+        
         let timerInterval = null; // Переменная для хранения интервала таймера
         let seconds = 0; // Переменная для отслеживания времени
         const totalTime = 5; // Общее время в секундах (можно изменить по желанию)
