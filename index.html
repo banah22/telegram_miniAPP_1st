@@ -217,8 +217,7 @@
         
       </div>
     </div>
-
-
+    
     <!-- Модальное окно для статистики -->
     <div id="statsModal" class="modal">
       <div class="modal-content">
@@ -241,7 +240,7 @@
             <circle class="progress" cx="50" cy="50" r="45"></circle>
             
             <!-- Кружочек в начале прогресс-бара -->
-            <circle class="progress-dot" cx="95" cy="50" r="5" /> <!-- Увеличен радиус кружочка -->
+            <circle class="progress-dot" cx="95" cy="50" r="5" /> 
             
             <!-- Вставка изображения в круг -->
             <image href="ggirl.png" x="10" y="10" height="90" width="90" clip-path="url(#circleClip)" />
@@ -249,26 +248,13 @@
     </div>
 
    
-    //<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
     <script>
         
         
         
-        let timerInterval = null; // Переменная для хранения интервала таймера
-        let seconds = 0; // Переменная для отслеживания времени
-        const totalTime = urlParams.get('var1'); // Общее время в секундах (можно изменить по желанию)
-        
-        const progressCircle = document.querySelector('.progress');
-        const sound = document.getElementById('timerSound'); // Получаем элемент аудио
-        const sound1 = document.getElementById('timerSound1');
-        const voteModal = document.getElementById('voteModal'); // Модальное окно
-        
-        // Устанавливаем начальное состояние круга
-        const circumference = 2 * Math.PI * 45; // Длина окружности
-        progressCircle.style.strokeDasharray = `${circumference}`; // Устанавливаем длину окружности
-        progressCircle.style.strokeDashoffset = `${circumference}`; // Начальное значение (полностью невидимо)
-
+       
         document.addEventListener('DOMContentLoaded', () => {
             Telegram.WebApp.ready();
             Telegram.WebApp.expand();
@@ -343,8 +329,6 @@
 }
 
 
-        
-        
         function startTimer() {
          seconds = 0; // Сбросить счетчик секунд
 
