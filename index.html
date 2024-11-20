@@ -275,7 +275,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       let variable1 = urlParams.get('var1');
 
-    console.log(window.location.search)
+    outputDiv.textContent += `Полный URL-запрос: ${window.location.search}`; // добавили вывод URL
 outputDiv.textContent = `Значение переменной var1: ${variable1}`;
 
         
