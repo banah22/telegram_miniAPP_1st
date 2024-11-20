@@ -6,10 +6,10 @@
     <style>
         body {
             display: flex;
-            flex-direction: column; /* Располагаем элементы вертикально */
-            align-items: flex-start; /* Выровнять элементы по левому краю */
+            flex-direction: column-reverse;/* Располагаем элементы вертикально */
+            
             height: 100vh; /* Занять всю высоту окна */
-            margin: 0;
+            margin: 0 auto;
             background-color: #ebffe0;
             padding: 20px; /* Добавляем отступы для удобства */
             overflow: hidden; /* Скрыть прокрутку */
@@ -17,8 +17,9 @@
 
         .user-info {
             display: flex;
+            align-self: flex-start; /* Выровнять элементы по левому краю */
             align-items: center; /* Центрируем аватар и имя по вертикали */
-            margin-bottom: 20px; /* Отступ снизу */
+            margin-bottom: auto; /* Отступ снизу */
         }
 
         .user-info img {
@@ -82,7 +83,7 @@
          
             padding: 10px 10px; /* размер кнопки "ST" */
             font-size: 18px; 
-            background-color: #fcfbde; 
+            background-color: #f7f497; 
             color: black;
             border: none;
             border-radius: 5px;
@@ -105,24 +106,23 @@
         }
 
         .modal-content {
-            position: relative; /* Добавлено для позиционирования внутренних элементов */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
             background-color: #ebffe0;
             margin: 15% auto; /* Центрирование */
             padding: 10px;
             border: 1px solid #f0f7cd;
             width: 80%; /* Ширина модального окна */
-            height: 120px;
+           
     
         }
 
         .modal-content h2 {
-            position: absolute; /* Абсолютное позиционирование заголовка */
-            top: 5px; /* Отступ сверху в 10 пикселей */
-            left: 50%; /* Центрируем по горизонтали */
-            transform: translateX(-50%); /* Смещаем на половину ширины заголовка для центрирования */
-
+            margin-bottom: auto;
+            text-align: center;
             color:#050505; /** Цвет заголовка **/ 
-              font-weight: bold; /** Жирное начертание **/ 
+            font-weight: bold; /** Жирное начертание **/ 
             
             
         }
@@ -162,13 +162,10 @@
          /* Стили для контейнера кнопок */
                   
        .button-container { 
-           position: absolute; /* Фиксируем кнопку внизу */
-           bottom: 10px; /*  Отступ снизу */
-           left: 50%; /* Центрируем кнопки по горизонтали */
-           transform: translateX(-50%); /* Смещаем на половину ширины для центрирования */
            
            display:flex ; /** Используем flexbox для расположения кнопок в ряд **/ 
            justify-content: center ; /** Центрируем кнопки по горизонтали **/ 
+           margin-top: auto; /* Отталкиваем кнопки от верхних элементов */
            
          }      
            
