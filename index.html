@@ -252,7 +252,7 @@
     
     <script>
         
-        document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       Telegram.WebApp.ready();
       Telegram.WebApp.expand();
 
@@ -275,14 +275,9 @@
       const urlParams = new URLSearchParams(window.location.search);
       let variable1 = urlParams.get('var1');
 
-      let variable1Value;
-      if (variable1 === null || isNaN(parseInt(variable1, 10))) {
-        variable1Value = "Ошибка: var1 не является числом или не передано";
-      } else {
-        variable1Value = parseInt(variable1, 10);
-      }
-      outputDiv.textContent = `Значение переменной var1: ${variable1Value}`;
-
+outputDiv.textContent = `Значение переменной var1: ${variable1}`;
+            
+      
 
     });
 
