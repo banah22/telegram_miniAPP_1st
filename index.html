@@ -252,54 +252,39 @@
     
     <script>
         
-        
-
-
-
-
-
-
-
-
-        
-       
         document.addEventListener('DOMContentLoaded', () => {
-            Telegram.WebApp.ready();
-            Telegram.WebApp.expand();
-        
-            const outputDiv = document.getElementById('output'); // Объявили переменную здесь
-            const initData = Telegram.WebApp.initData;
+      Telegram.WebApp.ready();
+      Telegram.WebApp.expand();
 
-            // Обработка данных пользователя из Telegram.WebApp.initData
-            if (initData && initData.user) {
-                const user = JSON.parse(initData.user);
-                document.getElementById('userName').textContent = user.first_name || "Имя не указано";
-                if (user.photo_url) {
-                    document.getElementById('userAvatar').src = user.photo_url;
-                }
-            } else {
-                //outputDiv.textContent = "User data not available."; // Убрали +=
-                document.getElementById('userName').textContent = "User data not available.";
-                document.getElementById('userAvatar').src = 'banah.png';
-            }
-          
-            // Обработка параметров URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const variable1 = urlParams.get('var1');
+      const outputDiv = document.getElementById('output');
+      const userNameElement = document.getElementById('userName');
+      const userAvatarElement = document.getElementById('userAvatar');
+      const initData = Telegram.WebApp.initData;
 
-            variable1 = parseInt(variable1, 10);  // parseInt с основанием 10 (десятичная система)
-
-            if (outputDiv) {
-        if (isNaN(variable1)) {
-            outputDiv.textContent = `Ошибка: var1 не является числом`;
-        } else {
-            outputDiv.textContent = `Значение переменной var1: ${variable1}`;
+      if (initData && initData.user) {
+        const user = JSON.parse(initData.user);
+        userNameElement.textContent = user.first_name || "Имя не указано";
+        if (user.photo_url) {
+          userAvatarElement.src = user.photo_url;
         }
-    } else {
-        console.error("Элемент с id 'output' не найден!");
-    }
-        });
-                
+      } else {
+        userNameElement.textContent = "User data not available.";
+        userAvatarElement.src = 'banah.png';
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      let variable1 = urlParams.get('var1');
+
+      let variable1Value;
+      if (variable1 === null || isNaN(parseInt(variable1, 10))) {
+        variable1Value = "Ошибка: var1 не является числом или не передано";
+      } else {
+        variable1Value = parseInt(variable1, 10);
+      }
+      outputDiv.textContent = `Значение переменной var1: ${variable1Value}`;
+
+
+    });
 
 
 
