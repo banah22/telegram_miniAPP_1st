@@ -270,45 +270,38 @@
         progressCircle.style.strokeDashoffset = `${circumference}`; // Начальное значение (полностью невидимо)
 
         document.addEventListener('DOMContentLoaded', () => {
-         
-         // Инициализация Telegram Web App
-         Telegram.WebApp.ready();
-         
-         // Разворачиваем приложение на весь экран
-         Telegram.WebApp.expand();
-
-         //const outputDiv = document.getElementById('output');
-         
-         const initData = Telegram.WebApp.initData;
-         const params = new URLSearchParams(initData);
-         const userData = Object.fromEntries(params);
-
-         if (userData.user) {
-           const user = JSON.parse(userData.user); 
-           
-           document.getElementById('userName').textContent = user.first_name || "Имя не указано";
-           if (user.photo_url) {
-             document.getElementById('userAvatar').src = user.photo_url;
-           }
-         } else {
-           outputDiv.textContent += "User data not available.";
-           document.getElementById('userName').textContent = "User data not available.";
-           document.getElementById('userAvatar').src = 'banah.png'; 
-         }
-
-         const urlParams = new URLSearchParams(window.location.search);
-         const variable1 = urlParams.get('var1');
-
-         const outputElement = document.getElementById('output');
-            if (outputElement) {
-              outputElement.textContent = `Значение переменной: ${variable1}`;
-            } else {
-              console.error("Элемент с id 'output' не найден!");
-            }   
-            
-       });
-
+            Telegram.WebApp.ready();
+            Telegram.WebApp.expand();
         
+            const outputDiv = document.getElementById('output'); // Объявили переменную здесь
+            const initData = Telegram.WebApp.initData;
+        
+            // Обработка данных пользователя из Telegram.WebApp.initData
+            if (initData && initData.user) {
+                const user = JSON.parse(initData.user);
+                document.getElementById('userName').textContent = user.first_name || "Имя не указано";
+                if (user.photo_url) {
+                    document.getElementById('userAvatar').src = user.photo_url;
+                }
+            } else {
+                outputDiv.textContent = "User data not available."; // Убрали +=
+                document.getElementById('userName').textContent = "User data not available.";
+                document.getElementById('userAvatar').src = 'banah.png';
+            }
+        
+            // Обработка параметров URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const variable1 = urlParams.get('var1');
+
+            variable1 = parseInt(variable1, 10);  // parseInt с основанием 10 (десятичная система)
+
+            if (outputDiv) {  // Проверка на существование outputDiv
+                outputDiv.textContent += `\nЗначение переменной var1: ${variable1}`;
+            } else {
+                console.error("Элемент с id 'output' не найден!");
+            }
+        });
+                
 
 
 
