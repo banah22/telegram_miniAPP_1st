@@ -255,8 +255,13 @@
         
         const urlParams = new URLSearchParams(window.location.search);
         const variable1 = urlParams.get('var1');
-     
-         console.log("Полученные переменные:", variable1);
+
+        const outputElement = document.getElementById('output');
+if (outputElement) {
+  outputElement.textContent = `Значение переменной: ${variable1}`;
+} else {
+  console.error("Элемент с id 'output' не найден!");
+}
         
         let timerInterval = null; // Переменная для хранения интервала таймера
         let seconds = 0; // Переменная для отслеживания времени
@@ -294,7 +299,7 @@
          } else {
            outputDiv.textContent += "User data not available.";
            document.getElementById('userName').textContent = "User data not available.";
-            document.getElementById('userAvatar').src = 'banah.png'; 
+           document.getElementById('userAvatar').src = 'banah.png'; 
          }
        });
 
