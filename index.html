@@ -253,30 +253,34 @@
     <script>
         
     document.addEventListener('DOMContentLoaded', async () => {
-    // Инициализация Telegram Web App
-    Telegram.WebApp.ready();
-    Telegram.WebApp.expand();
-
-    const outputDiv = document.getElementById('output');
-    
-    // Получаем initData
-    const initData2 = Telegram.WebApp.initDataUnsafe.start_param;
-
-        outputDiv.textContent = initData2;
-    // Декодируем initData
-    const params = new URLSearchParams(initData2);
-    
+         // Инициализация Telegram Web App
+            Telegram.WebApp.ready();
+            Telegram.WebApp.expand();
         
-    // Проверяем наличие user
-    if (params.has('startapp')) {
-        const UserParam = params.get('startapp');
+            const outputDiv = document.getElementById('output');
         
-        // Выводим параметры
-         
-        outputDiv.textContent += UserParam;
-    
-        outputDiv.textContent += "Параметры не найдены.";
-    }
+        // Получаем initData
+            const initData = Telegram.WebApp.initData;
+
+        // Получаем Start_param
+            const user_startapp = Telegram.WebApp.initDataUnsafe.start_param;
+            const user_duration = parseInt(user_startapp, 10);
+        
+            outputDiv.textContent = user_duration; 
+        
+        // Обработка данных пользователя из Telegram.WebApp.initData
+            if (initData && initData.user) {
+                const user = JSON.parse(initData.user);
+                document.getElementById('userName').textContent = user.first_name || "Имя не указано";
+                document.getElementById('userAvatar').src = user.photo_url;
+                }
+            } else {
+                
+                document.getElementById('userName').textContent = "User data not available.";
+                document.getElementById('userAvatar').src = 'banah.png';
+            }
+
+            
 });
         
 
