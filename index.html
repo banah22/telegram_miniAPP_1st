@@ -265,21 +265,20 @@
     // Декодируем initData
     const params = new URLSearchParams(initData);
     
-    // Создаем строку для вывода параметров
-                let paramsString = "URL Parameters:\n";
-
+    / Создаем строку для вывода параметров
+                            let paramsString = "URL Parameters:\n";
+            
         
-    // Проверяем наличие tgWebAppData
-    if (params.has('user')) {
-        const UserParam = params.get('user');
-        const vse = JSON.parse(decodeURIComponent(UserParam));
-
+    // Проверяем наличие user
+    if (params.has('startParam')) {
+        const UserParam = params.get('startParam');
+        
         // Выводим параметры
-        for (const [key, value] of Object.entries(vse)) {
+        for (const [key, value] of Object.entries(UserParam)) {
             paramsString += `${key}: ${JSON.stringify(value)}\n`;
-        }
         
-        outputDiv.textContent = paramsString;
+        
+        outputDiv.textContent = UserParam;
     } else {
         outputDiv.textContent = "Параметры не найдены.";
     }
