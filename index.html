@@ -265,13 +265,10 @@
     // Декодируем initData
     const params = new URLSearchParams(initData);
     
-    / Создаем строку для вывода параметров
-                            let paramsString = "URL Parameters:\n";
-            
         
     // Проверяем наличие user
-    if (params.has('startapp')) {
-        const UserParam = params.get('startapp');
+    if (params.has('chat_type')) {
+        const UserParam = params.get('chat_type');
         
         // Выводим параметры
          
