@@ -262,16 +262,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Получение параметров из query string
     const urlParams = new URLSearchParams(window.location.search); // Извлекаем параметры из query string
-    const var1 = urlParams.get('var1'); // Получаем значение параметра var1
+    const var1 = urlParams.get('var1') || null; // Получаем значение параметра var1
 
     // Выводим значение переменной var1
-    if (var1) {
+    if (var1 !== null) {
         outputDiv.textContent += `Значение переменной var1: ${var1}`;
     } else {
         outputDiv.textContent += "Переменная var1 не передана";
     }
 
-outputDiv.textContent += `Полный URL-запрос: ${window.location.href}`; // добавили вывод URL
+outputDiv.textContent += `Полный URL-запрос: ${window.location.search}`; // добавили вывод URL
     
 });
         
