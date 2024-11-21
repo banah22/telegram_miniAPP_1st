@@ -362,7 +362,7 @@
          timerInterval = setInterval(() => {
            seconds++; // Увеличиваем счетчик секунд
            
-           const offset = (1 - (seconds / totalTime)) * circumference; // Вычисляем смещение для прогрессии
+           const offset = (1 - (seconds / 5)) * circumference; // Вычисляем смещение для прогрессии
            progressCircle.style.strokeDashoffset = offset; // Обновляем смещение
 
            // Обновляем позицию кружочка
