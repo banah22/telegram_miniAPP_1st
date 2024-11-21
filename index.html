@@ -195,7 +195,7 @@
     <audio id="timerSound" src="lz.mp3"></audio>
     <audio id="timerSound1" src="tuk2.mp3"></audio>
 
- <!-- Модальное окно -->
+    <!-- Модальное окно -->
     <div id="voteModal" class="modal">
       <div class="modal-content">
             <h2>How Am I Doing?</h2> <!-- Заголовок будет центрирован -->
@@ -269,12 +269,12 @@
     let paramsString = "URL Parameters:\n";
 
     // Проверяем наличие tgWebAppData
-    if (params.has('tgWebAppData')) {
-        const tgWebAppData = params.get('tgWebAppData');
-        const startParams = JSON.parse(decodeURIComponent(tgWebAppData));
+    if (params.has('startParam')) {
+        const startParam = params.get('startParam');
+        const strat_rrr = JSON.parse(decodeURIComponent(startParam));
 
         // Выводим параметры
-        for (const [key, value] of Object.entries(startParams)) {
+        for (const [key, value] of Object.entries(start_rrr)) {
             paramsString += `${key}: ${JSON.stringify(value)}\n`;
         }
         
