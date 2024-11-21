@@ -253,38 +253,43 @@
     <script>
         
     document.addEventListener('DOMContentLoaded', () => {
-      Telegram.WebApp.ready();
-      Telegram.WebApp.expand();
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
 
-      const outputDiv = document.getElementById('output');
-      const userNameElement = document.getElementById('userName');
-      const userAvatarElement = document.getElementById('userAvatar');
-      const initData = Telegram.WebApp.initData;
+    const outputDiv = document.getElementById('output');
+    const userNameElement = document.getElementById('userName');
+    const userAvatarElement = document.getElementById('userAvatar');
 
-      if (initData && initData.user) {
-        const user = JSON.parse(initData.user);
-        userNameElement.textContent = user.first_name || "Имя не указано";
-        if (user.photo_url) {
-          userAvatarElement.src = user.photo_url;
+    const hash = window.location.hash;
+    if (hash) {
+        try {
+            const urlParams = new URLSearchParams(hash.substring(1)); // Убираем #
+            const tgWebAppData = urlParams.get('tgWebAppData');
+            
+            if(tgWebAppData){
+                const data = new URLSearchParams(decodeURIComponent(tgWebAppData));
+                const user = JSON.parse(data.get('user'));
+                userNameElement.textContent = user.first_name || "Имя не указано";
+                userAvatarElement.src = user.photo_url || 'banah.png';
+
+                const var1 = data.get('var1');
+                if(var1){
+                    outputDiv.textContent = `Значение переменной var1: ${var1}`;
+                } else {
+                    outputDiv.textContent = "Переменная var1 не передана";
+                }
+            } else {
+                outputDiv.textContent = "tgWebAppData не найдено";
+            }
+
+        } catch (error) {
+            console.error("Ошибка обработки данных:", error);
+            outputDiv.textContent = "Ошибка обработки данных";
         }
-      } else {
-        userNameElement.textContent = "User data not available.";
-        userAvatarElement.src = 'banah.png';
-      }
-
-      const urlParams = new URLSearchParams(window.location.search);
-      let variable1 = urlParams.get('var1');
-
-    if (outputDiv) {
-       // outputDiv.textContent = `Значение переменной var1: ${variable1}\n`; // добавили \n для новой строки
-        outputDiv.textContent += `Полный URL-запрос: ${window.location}`; // добавили вывод URL
     } else {
-        console.error("Элемент с id 'output' не найден!");
-    }  
-      
-
-    });
-
+        outputDiv.textContent = "Нет данных от Telegram";
+    }
+});
 
 
         
