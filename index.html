@@ -281,18 +281,13 @@
                        document.getElementById('userAvatar').src = 'banah.png'; 
                      }
                 
-                    const hash = window.location.hash;
-                    const urlParams = new URLSearchParams(hash.substring(1)); // Убираем символ '#'
+                    const outputElement = document.getElementById('output'); // Замените 'output' на id вашего элемента
+
+outputElement.innerHTML = JSON.stringify(userObject, null, 2); //  красивое форматирование с отступами
+
                     
-                    const var1 = urlParams.get('var1'); // Получаем значение переменной var1
-                
-                    // Выводим значение переменной var1
-                    if (var1) {
-                        outputDiv.textContent += `Значение переменной: ${var1}`;
-                    } else {
-                        outputDiv.textContent = "Переменная var1 не передана";
-                    }
-outputDiv.textContent += `Полный URL-запрос: ${urlParams.get('tgWebAppStartParam')}`; // добавили вывод URL
+                    
+                   
                    });
 
         
