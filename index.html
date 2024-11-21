@@ -281,10 +281,7 @@
                        document.getElementById('userAvatar').src = 'banah.png'; 
                      }
                 
-                    const outputElement = document.getElementById('output'); // Замените 'output' на id вашего элемента
-
-outputElement.innerHTML = JSON.stringify(userObject, null, 2); //  красивое форматирование с отступами
-
+                    document.getElementById('output').textContent = JSON.stringify(user, null, 2); // 2 - для отступов
                     
                     
                    
