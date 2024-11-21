@@ -282,7 +282,11 @@
 
         const totalTime = duration; // Присваиваем значение
 outputDiv.textContent += `Start Parameter1: ${startParam}, Duration: ${duration}`;
-
+if (isNaN(totalTime)) {
+            outputDiv.textContent += "Invalid start_param value.";
+         
+            return; // Выход из функции, если значение некорректно
+        }
             
             const userData = params.get('user'); // Get the user data string
             if (userData) {
