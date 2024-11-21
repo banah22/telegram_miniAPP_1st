@@ -276,7 +276,7 @@
              totalTime = duration;
                 
             
-            outputDiv.textContent += `Start Parameter2: ${startParam}, Duration: ${totalTime}`;
+            //outputDiv.textContent += `Start Parameter2: ${startParam}, Duration: ${totalTime}`;
 
             const userData = params.get('user'); // Get the user data string
             if (userData) {
@@ -317,6 +317,7 @@
                  clearInterval(timerInterval); // Остановить таймер
                  timerInterval = null;
                  timerButton.textContent = "Start"; // Изменяем текст кнопки на "Start"
+                 timerButton.style.backgroundColor = "green"; // Меняем цвет кнопки на зеленый
                  resetTimer(); // Сбросить таймер
                  voteModal.style.display = "none"; // Скрыть модальное окно при остановке
              } else {
@@ -361,15 +362,7 @@
 
          timerInterval = setInterval(() => {
            seconds++; // Увеличиваем счетчик секунд
-
-             // Проверка на NaN перед использованием totalTime
-        if (isNaN(totalTime)) {
-            console.error("Total time is not a valid number.");
-            clearInterval(timerInterval); // Остановить таймер
-            return;
-        }
-
-           
+     
            const offset = (1 - (seconds / totalTime)) * circumference; // Вычисляем смещение для прогрессии
            progressCircle.style.strokeDashoffset = offset; // Обновляем смещение
 
