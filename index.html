@@ -270,17 +270,14 @@
             
         
     // Проверяем наличие user
-    if (params.has('startParam')) {
-        const UserParam = params.get('startParam');
+    if (params.has('startapp')) {
+        const UserParam = params.get('startapp');
         
         // Выводим параметры
-        for (const [key, value] of Object.entries(UserParam)) {
-            paramsString += `${key}: ${JSON.stringify(value)}\n`;
-        
-        
+         
         outputDiv.textContent = UserParam;
-    } else {
-        outputDiv.textContent = "Параметры не найдены.";
+    
+        outputDiv.textContent += "Параметры не найдены.";
     }
 });
         
