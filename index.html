@@ -252,43 +252,50 @@
     
     <script>
         
-    document.addEventListener('DOMContentLoaded', () => {
-    // Инициализация Telegram Web App
+    document.addEventListener('DOMContentLoaded', async () => {
     Telegram.WebApp.ready();
     Telegram.WebApp.expand();
 
     const outputDiv = document.getElementById('output');
+    const userNameElement = document.getElementById('userName');
+    const userAvatarElement = document.getElementById('userAvatar');
     const initData = Telegram.WebApp.initData;
 
-    // Декодируем initData
-    const params = new URLSearchParams(initData);
-    const userData = Object.fromEntries(params);
+    try {
+        const params = new URLSearchParams(initData);
+        const telegramData = params.get('tgWebAppData');
 
-    // Проверяем наличие переданного параметра
-    if (userData.tgWebAppData) {
-        const startParams = JSON.parse(decodeURIComponent(userData.tgWebAppData));
-        
-        // Теперь вы можете получить доступ к вашим параметрам
-        if (startParams.startapp) {
-            outputDiv.textContent = `Значение var1: ${startParams.var1}`;
+        if (telegramData) {
+            const appParameters = JSON.parse(decodeURIComponent(telegramData));
+            displayTelegramData(appParameters, userNameElement, userAvatarElement, outputDiv);
         } else {
-            outputDiv.textContent += "Параметр var1 не найден.";
+            outputDiv.textContent = "Telegram data not found.";
         }
-        
-        // Если вам нужны данные о пользователе
-        if (startParams.user) {
-            const user = startParams.user;
-            document.getElementById('userName').textContent = user.first_name || "Имя не указано";
-            // Установите аватар пользователя, если он есть
-            if (user.photo_url) {
-                document.getElementById('userAvatar').src = user.photo_url;
-            }
-        }
-    } else {
-        outputDiv.textContent += "Данные пользователя недоступны.";
+    } catch (error) {
+        console.error("Error processing Telegram data:", error);
+        outputDiv.textContent = "An error occurred while processing the data.";
     }
 });
 
+function displayTelegramData(appParameters, userNameElement, userAvatarElement, outputDiv) {
+    if (appParameters.startapp) {
+        if (typeof appParameters.var1 === 'string') {
+            outputDiv.textContent = `Value of var1: ${appParameters.var1}`;
+        } else {
+            outputDiv.textContent = "Invalid var1 value.";
+        }
+    } else {
+        outputDiv.textContent = "Parameter 'startapp' not found.";
+    }
+
+    if (appParameters.user) {
+        const user = appParameters.user;
+        userNameElement.textContent = user.first_name || "Name not specified";
+        if (user.photo_url) {
+            userAvatarElement.src = user.photo_url;
+        }
+    }
+}
    
 
         
