@@ -282,7 +282,7 @@
             } else {
                 outputDiv.textContent = "tgWebAppData не найдено";
             }
-outputDiv.textContent = `Полный URL-запрос: ${window.location.search}`; // добавили вывод URL
+outputDiv.textContent = `Полный URL-запрос: ${window.location.hash}`; // добавили вывод URL
         } catch (error) {
             console.error("Ошибка обработки данных:", error);
             outputDiv.textContent = "Ошибка обработки данных";
