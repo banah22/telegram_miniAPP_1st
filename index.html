@@ -260,24 +260,18 @@
     const userNameElement = document.getElementById('userName');
     const userAvatarElement = document.getElementById('userAvatar');
     const initData = Telegram.WebApp.initData;
+    
+    let paramsString = "URL Parameters:\n";
 
-    try {
-        const params = new URLSearchParams(initData);
-        const telegramData = params.get('user');
-
-        outputDiv.textContent = 'telegramData';
-        if (telegramData) {
-            const appParameters = JSON.parse(decodeURIComponent(telegramData));
-            displayTelegramData(appParameters, userNameElement, userAvatarElement, outputDiv);
-        } else {
-            outputDiv.textContent = "Telegram data not found.";
+        for (const [key, value] of params.entries()) {
+            paramsString += `${key}: ${value}\n`;
         }
-    } catch (error) {
-        console.error("Error processing Telegram data:", error);
-        outputDiv.textContent = "An error occurred while processing the data.";
-    }
+
+        outputDiv.textContent = paramsString;
+    
 });
 
+        
 function displayTelegramData(appParameters, userNameElement, userAvatarElement, outputDiv) {
     if (appParameters.startapp) {
         if (typeof appParameters.startapp === 'string') {
