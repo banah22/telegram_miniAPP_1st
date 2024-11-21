@@ -361,19 +361,27 @@
 
          timerInterval = setInterval(() => {
            seconds++; // Увеличиваем счетчик секунд
+
+             // Проверка на NaN перед использованием totalTime
+        if (isNaN(totalTime)) {
+            console.error("Total time is not a valid number.");
+            clearInterval(timerInterval); // Остановить таймер
+            return;
+        }
+
            
-           const offset = (1 - (seconds / 5)) * circumference; // Вычисляем смещение для прогрессии
+           const offset = (1 - (seconds / totalTime)) * circumference; // Вычисляем смещение для прогрессии
            progressCircle.style.strokeDashoffset = offset; // Обновляем смещение
 
            // Обновляем позицию кружочка
-           const angle = (seconds / 5) * (2 * Math.PI); // Вычисляем угол в радианах
+           const angle = (seconds / totalTime) * (2 * Math.PI); // Вычисляем угол в радианах
            const dotX = 50 + Math.cos(angle) * (45); // Вычисляем координату X кружочка
            const dotY = 50 + Math.sin(angle) * (45); // Вычисляем координату Y кружочка
 
            document.querySelector('.progress-dot').setAttribute('cx', dotX);
            document.querySelector('.progress-dot').setAttribute('cy', dotY);
 
-           if (seconds >= 5) {
+           if (seconds >= totalTime) {
              clearInterval(timerInterval); // Остановить таймер по истечении времени
            
              timerInterval = null;
