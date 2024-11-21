@@ -273,16 +273,9 @@
             const startParam = params.get('start_param');
             const duration = parseInt(startParam, 10);
 
-            try {
-            // ... your existing code to get duration ...
-                totalTime = duration;
-                } catch (error) {
-                    // ... error handling code ...
-                    totalTime = 3; // Or some default value
-                    
-                    outputDiv.textContent = "An error occurred.";
-                }
-            const totalTime = duration; // Присваиваем значение
+             totalTime = duration;
+                
+            
         //outputDiv.textContent += `Start Parameter2: ${startParam}, Duration: ${totalTime}`;
 
             const userData = params.get('user'); // Get the user data string
