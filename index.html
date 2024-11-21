@@ -270,6 +270,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         outputDiv.textContent += "Переменная var1 не передана";
     }
+
+outputDiv.textContent += `Полный URL-запрос: ${window.location.href}`; // добавили вывод URL
+    
 });
         
        let votes = []; // Массив для хранения результатов голосования
