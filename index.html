@@ -276,7 +276,7 @@
              totalTime = duration;
                 
             
-            outputDiv.textContent += `Start Parameter2: ${startParam}, Duration: ${totalTime}`;
+            //outputDiv.textContent += `Start Parameter2: ${startParam}, Duration: ${totalTime}`;
 
             const userData = params.get('user'); // Get the user data string
             if (userData) {
@@ -288,7 +288,6 @@
                 userAvatarElement.src = 'banah.png';
             }
             } catch (error) {
-                console.error("Error processing data:", error);
                 outputDiv.textContent = "An error occurred.";
             }
 });
