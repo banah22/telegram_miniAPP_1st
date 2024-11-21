@@ -281,10 +281,15 @@
                        document.getElementById('userAvatar').src = 'banah.png'; 
                      }
                 
-                   if (userData.) {
+                   if (userData.startParam) {
                        const startpr = JSON.parse(userData.startParam); 
-                    document.getElementById('output').textContent = JSON.stringify(startpr, null, 2); // 2 - для отступов
-                    
+                        document.getElementById('output').textContent = JSON.stringify(startpr, null, 2); // 2 - для отступов
+
+                     } else 
+                       outputDiv.textContent += "User data not available.";
+
+
+                       
                     
                    });
 
