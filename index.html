@@ -254,11 +254,7 @@
 
             
             
-            // Устанавливаем начальное состояние круга
-            const circumference = 2 * Math.PI * 45; // Длина окружности
-            progressCircle.style.strokeDasharray = `${circumference}`; // Устанавливаем длину окружности
-            progressCircle.style.strokeDashoffset = `${circumference}`; // Начальное значение (полностью невидимо)
-
+          
         
         
     document.addEventListener('DOMContentLoaded', async () => {
@@ -302,6 +298,11 @@
             const sound = document.getElementById('timerSound'); // Получаем элемент аудио
             const sound1 = document.getElementById('timerSound1');
             const voteModal = document.getElementById('voteModal'); // Модальное окно
+
+        // Устанавливаем начальное состояние круга
+            const circumference = 2 * Math.PI * 45; // Длина окружности
+            progressCircle.style.strokeDasharray = `${circumference}`; // Устанавливаем длину окружности
+            progressCircle.style.strokeDashoffset = `${circumference}`; // Начальное значение (полностью невидимо)
 
         
        let votes = []; // Массив для хранения результатов голосования
