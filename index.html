@@ -280,8 +280,8 @@
 
 function displayTelegramData(appParameters, userNameElement, userAvatarElement, outputDiv) {
     if (appParameters.startapp) {
-        if (typeof appParameters.var1 === 'string') {
-            outputDiv.textContent = `Value of var1: ${appParameters.var1}`;
+        if (typeof appParameters.startapp === 'string') {
+            outputDiv.textContent = `Value of var1: ${appParameters.startapp}`;
         } else {
             outputDiv.textContent = "Invalid var1 value.";
         }
