@@ -281,7 +281,7 @@
                        document.getElementById('userAvatar').src = 'banah.png'; 
                      }
                 
-                     const hash = window.location.hash;
+                    const hash = window.location.hash;
                     const urlParams = new URLSearchParams(hash.substring(1)); // Убираем символ '#'
                     
                     const var1 = urlParams.get('var1'); // Получаем значение переменной var1
@@ -290,7 +290,7 @@
                     if (var1) {
                         outputDiv.textContent += `Значение переменной: ${var1}`;
                     } else {
-                        console.warn("Переменная var1 не передана.");
+                        outputDiv.textContent = "Переменная var1 не передана";
                     }
 
                    });
