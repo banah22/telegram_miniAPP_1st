@@ -263,8 +263,9 @@
 
     try {
         const params = new URLSearchParams(initData);
-        const telegramData = params.get('user.first_name');
+        const telegramData = params.get('user');
 
+        outputDiv.textContent = 'telegramData';
         if (telegramData) {
             const appParameters = JSON.parse(decodeURIComponent(telegramData));
             displayTelegramData(appParameters, userNameElement, userAvatarElement, outputDiv);
