@@ -270,8 +270,8 @@
                 
                      if (userData.user) {
                        const user = JSON.parse(userData.user); 
-                       //document.getElementById('userName').textContent = user.first_name || "Имя не указано";
-document.getElementById('output').textContent = JSON.stringify(user, null, 2); // 2 - для отступов
+                       document.getElementById('userName').textContent = user.first_name || "Имя не указано";
+
                        if (user.photo_url) {
                          document.getElementById('userAvatar').src = user.photo_url;
                        }
@@ -281,10 +281,11 @@ document.getElementById('output').textContent = JSON.stringify(user, null, 2); /
                        document.getElementById('userAvatar').src = 'banah.png'; 
                      }
                 
-                    document.getElementById('output').textContent = JSON.stringify(user, null, 2); // 2 - для отступов
+                   if (userData.) {
+                       const startpr = JSON.parse(userData.startParam); 
+                    document.getElementById('output').textContent = JSON.stringify(startpr, null, 2); // 2 - для отступов
                     
                     
-    
                    });
 
         
