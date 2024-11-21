@@ -263,7 +263,7 @@
 
     try {
         const params = new URLSearchParams(initData);
-        const telegramData = params.get('tgWebAppData');
+        const telegramData = params.get('startapp');
 
         if (telegramData) {
             const appParameters = JSON.parse(decodeURIComponent(telegramData));
