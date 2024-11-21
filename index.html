@@ -366,14 +366,14 @@
            progressCircle.style.strokeDashoffset = offset; // Обновляем смещение
 
            // Обновляем позицию кружочка
-           const angle = (seconds / totalTime) * (2 * Math.PI); // Вычисляем угол в радианах
+           const angle = (seconds / 5) * (2 * Math.PI); // Вычисляем угол в радианах
            const dotX = 50 + Math.cos(angle) * (45); // Вычисляем координату X кружочка
            const dotY = 50 + Math.sin(angle) * (45); // Вычисляем координату Y кружочка
 
            document.querySelector('.progress-dot').setAttribute('cx', dotX);
            document.querySelector('.progress-dot').setAttribute('cy', dotY);
 
-           if (seconds >= totalTime) {
+           if (seconds >= 5) {
              clearInterval(timerInterval); // Остановить таймер по истечении времени
            
              timerInterval = null;
