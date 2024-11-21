@@ -273,7 +273,15 @@
             const duration = parseInt(startParam, 10);
     
             outputDiv.textContent = `Start Parameter: ${startParam}, Duration: ${duration}`;
-    
+    // Проверяем, является ли duration допустимым числом
+        if (isNaN(duration)) {
+            outputDiv.textContent = "Invalid start_param value.";
+            console.error("Invalid start_param:", startParam);
+            return; // Выход из функции, если значение некорректно
+        }
+
+        const totalTime = duration; // Присваиваем значение
+            
             const userData = params.get('user'); // Get the user data string
             if (userData) {
                 const user = JSON.parse(decodeURIComponent(userData)); // Decode and parse
@@ -292,7 +300,7 @@
             
             let timerInterval = null; // Переменная для хранения интервала таймера
             let seconds = 0; // Переменная для отслеживания времени
-            const totalTime = 25; // Общее время в секундах (можно изменить по желанию)
+            //const totalTime = 25; // Общее время в секундах (можно изменить по желанию)
             
             const progressCircle = document.querySelector('.progress');
             const sound = document.getElementById('timerSound'); // Получаем элемент аудио
