@@ -263,28 +263,41 @@
 
         
         try {
-        const params = new URLSearchParams(Telegram.WebApp.initData);
-        const startParam = params.get('start_param');
-        const duration = parseInt(startParam, 10);
-
-        outputDiv.textContent = `Start Parameter: ${startParam}, Duration: ${duration}`;
-
-        const userData = params.get('user'); // Get the user data string
-        if (userData) {
-            const user = JSON.parse(decodeURIComponent(userData)); // Decode and parse
-            userNameElement.textContent = user.first_name || "Name not specified";
-            userAvatarElement.src = user.photo_url || 'banah.png';
-        } else {
-            userNameElement.textContent = "User data not available.";
-            userAvatarElement.src = 'banah.png';
-        }
-    } catch (error) {
-        console.error("Error processing data:", error);
-        outputDiv.textContent = "An error occurred.";
-    }
+            const params = new URLSearchParams(Telegram.WebApp.initData);
+            const startParam = params.get('start_param');
+            const duration = parseInt(startParam, 10);
+    
+            outputDiv.textContent = `Start Parameter: ${startParam}, Duration: ${duration}`;
+    
+            const userData = params.get('user'); // Get the user data string
+            if (userData) {
+                const user = JSON.parse(decodeURIComponent(userData)); // Decode and parse
+                userNameElement.textContent = user.first_name || "Name not specified";
+                userAvatarElement.src = user.photo_url || 'banah.png';
+            } else {
+                userNameElement.textContent = "User data not available.";
+                userAvatarElement.src = 'banah.png';
+            }
+            } catch (error) {
+                console.error("Error processing data:", error);
+                outputDiv.textContent = "An error occurred.";
+            }
 });
         
-
+            let timerInterval = null; // Переменная для хранения интервала таймера
+            let seconds = 0; // Переменная для отслеживания времени
+            const totalTime = duration; // Общее время в секундах (можно изменить по желанию)
+            
+            const progressCircle = document.querySelector('.progress');
+            const sound = document.getElementById('timerSound'); // Получаем элемент аудио
+            const sound1 = document.getElementById('timerSound1');
+            const voteModal = document.getElementById('voteModal'); // Модальное окно
+            
+            // Устанавливаем начальное состояние круга
+            const circumference = 2 * Math.PI * 45; // Длина окружности
+            progressCircle.style.strokeDasharray = `${circumference}`; // Устанавливаем длину окружности
+            progressCircle.style.strokeDashoffset = `${circumference}`; // Начальное значение (полностью невидимо)
+    
 
         
        let votes = []; // Массив для хранения результатов голосования
