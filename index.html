@@ -254,26 +254,45 @@
         
     
 
-document.addEventListener('DOMContentLoaded', () => {
-    Telegram.WebApp.ready();
-    Telegram.WebApp.expand();
+   document.addEventListener('DOMContentLoaded', () => {
 
-    const outputDiv = document.getElementById('output');
+                
+                     Telegram.WebApp.ready();
+                
+                     Telegram.WebApp.expand();
+                
+                     const outputDiv = document.getElementById('output');
+                     const initData = Telegram.WebApp.initData;
+                     
+                     
+                     const params = new URLSearchParams(initData);
+                     const userData = Object.fromEntries(params);
+                
+                     if (userData.user) {
+                       const user = JSON.parse(userData.user); 
+                       document.getElementById('userName').textContent = user.first_name || "Имя не указано";
 
-    // Получение параметров из query string
-    const urlParams = new URLSearchParams(window.location.search); // Извлекаем параметры из query string
-    const var1 = urlParams.get('var1') || null; // Получаем значение параметра var1
+                       if (user.photo_url) {
+                         document.getElementById('userAvatar').src = user.photo_url;
+                       }
+                     } else {
+                       outputDiv.textContent += "User data not available.";
+                       document.getElementById('userName').textContent = "User data not available.";
+                       document.getElementById('userAvatar').src = 'banah.png'; 
+                     }
+                
+                     const urlParams = new URLSearchParams(window.location.search);
+                     const variable1 = urlParams.get('var1');
+                
+                     const outputElement = document.getElementById('output');
+                        if (outputElement) {
+                          outputElement.textContent = `Значение переменной: ${variable1}`;
+                        } else {
+                          console.error("Элемент с id 'output' не найден!");
+                        }   
+                        
+                   });
 
-    // Выводим значение переменной var1
-    if (var1 !== null) {
-        outputDiv.textContent += `Значение переменной var1: ${var1}`;
-    } else {
-        outputDiv.textContent += "Переменная var1 не передана";
-    }
-
-outputDiv.textContent += `Полный URL-запрос: ${window.location.search}`; // добавили вывод URL
-    
-});
         
        let votes = []; // Массив для хранения результатов голосования
     
