@@ -252,46 +252,44 @@
     
     <script>
         
-    
+    document.addEventListener('DOMContentLoaded', () => {
+    // Инициализация Telegram Web App
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
 
-   document.addEventListener('DOMContentLoaded', () => {
+    const outputDiv = document.getElementById('output');
+    const initData = Telegram.WebApp.initData;
 
-                
-                     Telegram.WebApp.ready();
-                
-                     Telegram.WebApp.expand();
-                
-                     const outputDiv = document.getElementById('output');
-                     const initData = Telegram.WebApp.initData;
-                     
-                     
-                     const params = new URLSearchParams(initData);
-                     const userData = Object.fromEntries(params);
-                
-                     if (userData.user) {
-                       const user = JSON.parse(userData.user); 
-                       document.getElementById('userName').textContent = user.first_name || "Имя не указано";
+    // Декодируем initData
+    const params = new URLSearchParams(initData);
+    const userData = Object.fromEntries(params);
 
-                       if (user.photo_url) {
-                         document.getElementById('userAvatar').src = user.photo_url;
-                       }
-                     } else {
-                       outputDiv.textContent += "User data not available.";
-                       document.getElementById('userName').textContent = "User data not available.";
-                       document.getElementById('userAvatar').src = 'banah.png'; 
-                     }
-                
-                   if (userData.startParam) {
-                       const startpr = JSON.parse(userData.startParam); 
-                        document.getElementById('output').textContent = JSON.stringify(startpr, null, 2); // 2 - для отступов
+    // Проверяем наличие переданного параметра
+    if (userData.tgWebAppData) {
+        const startParams = JSON.parse(decodeURIComponent(userData.tgWebAppData));
+        
+        // Теперь вы можете получить доступ к вашим параметрам
+        if (startParams.startapp) {
+            outputDiv.textContent = `Значение var1: ${startParams.var1}`;
+        } else {
+            outputDiv.textContent += "Параметр var1 не найден.";
+        }
+        
+        // Если вам нужны данные о пользователе
+        if (startParams.user) {
+            const user = startParams.user;
+            document.getElementById('userName').textContent = user.first_name || "Имя не указано";
+            // Установите аватар пользователя, если он есть
+            if (user.photo_url) {
+                document.getElementById('userAvatar').src = user.photo_url;
+            }
+        }
+    } else {
+        outputDiv.textContent += "Данные пользователя недоступны.";
+    }
+});
 
-                     } else 
-                       outputDiv.textContent += "User data not available.";
-
-
-                       
-                    
-                   });
+   
 
         
        let votes = []; // Массив для хранения результатов голосования
