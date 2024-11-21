@@ -253,45 +253,38 @@
     <script>
         
     document.addEventListener('DOMContentLoaded', async () => {
+    // Инициализация Telegram Web App
     Telegram.WebApp.ready();
     Telegram.WebApp.expand();
 
     const outputDiv = document.getElementById('output');
-    const userNameElement = document.getElementById('userName');
-    const userAvatarElement = document.getElementById('userAvatar');
-    const initData = Telegram.WebApp.initData;
     
+    // Получаем initData
+    const initData = Telegram.WebApp.initData;
+
+    // Декодируем initData
+    const params = new URLSearchParams(initData);
+    
+    // Создаем строку для вывода параметров
     let paramsString = "URL Parameters:\n";
 
-        for (const [key, value] of params.entries()) {
-            paramsString += `${key}: ${value}\n`;
+    // Проверяем наличие tgWebAppData
+    if (params.has('tgWebAppData')) {
+        const tgWebAppData = params.get('tgWebAppData');
+        const startParams = JSON.parse(decodeURIComponent(tgWebAppData));
+
+        // Выводим параметры
+        for (const [key, value] of Object.entries(startParams)) {
+            paramsString += `${key}: ${JSON.stringify(value)}\n`;
         }
-
-        outputDiv.textContent = paramsString;
-    
-});
-
         
-function displayTelegramData(appParameters, userNameElement, userAvatarElement, outputDiv) {
-    if (appParameters.startapp) {
-        if (typeof appParameters.startapp === 'string') {
-            outputDiv.textContent = `Value of var1: ${appParameters.startapp}`;
-        } else {
-            outputDiv.textContent = "Invalid var1 value.";
-        }
+        outputDiv.textContent = paramsString;
     } else {
-        outputDiv.textContent += "Parameter 'startapp' not found.";
+        outputDiv.textContent = "Параметры не найдены.";
     }
+});
+        
 
-    if (appParameters.user) {
-        const user = appParameters.user;
-        userNameElement.textContent = user.first_name || "Name not specified";
-        if (user.photo_url) {
-            userAvatarElement.src = user.photo_url;
-        }
-    }
-}
-   
 
         
        let votes = []; // Массив для хранения результатов голосования
