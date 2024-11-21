@@ -252,47 +252,25 @@
     
     <script>
         
-    document.addEventListener('DOMContentLoaded', () => {
+    
+
+document.addEventListener('DOMContentLoaded', () => {
     Telegram.WebApp.ready();
     Telegram.WebApp.expand();
 
     const outputDiv = document.getElementById('output');
-    const userNameElement = document.getElementById('userName');
-    const userAvatarElement = document.getElementById('userAvatar');
 
-    const hash = window.location.hash;
-    if (hash) {
-        try {
-            const urlParams = new URLSearchParams(hash.substring(1)); // Убираем #
-            const tgWebAppData = urlParams.get('tgWebAppData');
-            
-            if(tgWebAppData){
-                const data = new URLSearchParams(decodeURIComponent(tgWebAppData));
-                const user = JSON.parse(data.get('user'));
-                userNameElement.textContent = user.first_name || "Имя не указано";
-                userAvatarElement.src = user.photo_url || 'banah.png';
+    // Получение параметров из query string
+    const urlParams = new URLSearchParams(window.location.search); // Извлекаем параметры из query string
+    const var1 = urlParams.get('var1'); // Получаем значение параметра var1
 
-                const var1 = data.get('var1');
-                if(var1){
-                    outputDiv.textContent = `Значение переменной var1: ${var1}`;
-                    
-                } else {
-                    outputDiv.textContent = "Переменная var1 не передана";
-                }
-            } else {
-                outputDiv.textContent = "tgWebAppData не найдено";
-            }
-outputDiv.textContent = `Полный URL-запрос: ${window.location.href}`; // добавили вывод URL
-        } catch (error) {
-            console.error("Ошибка обработки данных:", error);
-            outputDiv.textContent = "Ошибка обработки данных";
-        }
+    // Выводим значение переменной var1
+    if (var1) {
+        outputDiv.textContent += `Значение переменной var1: ${var1}`;
     } else {
-        outputDiv.textContent = "Нет данных от Telegram";
+        outputDiv.textContent += "Переменная var1 не передана";
     }
 });
-
-
         
        let votes = []; // Массив для хранения результатов голосования
     
