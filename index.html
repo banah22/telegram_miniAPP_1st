@@ -260,19 +260,20 @@
     const outputDiv = document.getElementById('output');
     
     // Получаем initData
-    const initData = Telegram.WebApp.initData;
+    const initData2 = Telegram.WebApp.initDataUnsafe.start_param;
 
+        outputDiv.textContent = initData2;
     // Декодируем initData
-    const params = new URLSearchParams(initData);
+    const params = new URLSearchParams(initData2);
     
         
     // Проверяем наличие user
-    if (params.has('chat_type')) {
-        const UserParam = params.get('chat_type');
+    if (params.has('startapp')) {
+        const UserParam = params.get('startapp');
         
         // Выводим параметры
          
-        outputDiv.textContent = UserParam;
+        outputDiv.textContent += UserParam;
     
         outputDiv.textContent += "Параметры не найдены.";
     }
