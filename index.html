@@ -252,14 +252,7 @@
     
     <script>
 
-            let timerInterval = null; // Переменная для хранения интервала таймера
-            let seconds = 0; // Переменная для отслеживания времени
-            const totalTime = duration; // Общее время в секундах (можно изменить по желанию)
             
-            const progressCircle = document.querySelector('.progress');
-            const sound = document.getElementById('timerSound'); // Получаем элемент аудио
-            const sound1 = document.getElementById('timerSound1');
-            const voteModal = document.getElementById('voteModal'); // Модальное окно
             
             // Устанавливаем начальное состояние круга
             const circumference = 2 * Math.PI * 45; // Длина окружности
@@ -301,7 +294,14 @@
 });
         
             
-    
+            let timerInterval = null; // Переменная для хранения интервала таймера
+            let seconds = 0; // Переменная для отслеживания времени
+            const totalTime = duration; // Общее время в секундах (можно изменить по желанию)
+            
+            const progressCircle = document.querySelector('.progress');
+            const sound = document.getElementById('timerSound'); // Получаем элемент аудио
+            const sound1 = document.getElementById('timerSound1');
+            const voteModal = document.getElementById('voteModal'); // Модальное окно
 
         
        let votes = []; // Массив для хранения результатов голосования
