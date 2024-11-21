@@ -275,6 +275,7 @@
                 const var1 = data.get('var1');
                 if(var1){
                     outputDiv.textContent = `Значение переменной var1: ${var1}`;
+                    outputDiv.textContent += `Полный URL-запрос: ${window.location.search}`; // добавили вывод URL
                 } else {
                     outputDiv.textContent = "Переменная var1 не передана";
                 }
